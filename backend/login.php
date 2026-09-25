@@ -8,8 +8,8 @@ $auth = new Auth($db);
 
 $error = "";
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = trim($_POST['username']);
-    $password = trim($_POST['password']);
+    $username = htmlspecialchars(trim($_POST['username']));
+    $password = htmlspecialchars(trim($_POST['password']));
 
     if ($auth->login($username, $password)) {
         header("Location: index.php");

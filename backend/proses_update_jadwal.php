@@ -12,10 +12,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $paket_id         = $_POST['paket_id'] ?? null;
     $tanggal_berangkat= $_POST['tanggal_berangkat'] ?? null;
     $tgl_kepulangan   = !empty($_POST['tgl_kepulangan']) ? $_POST['tgl_kepulangan'] : null;
-    $maskapai         = trim($_POST['maskapai'] ?? '');
-    $embarkasi        = trim($_POST['embarkasi'] ?? '');
+    $maskapai         = htmlspecialchars(trim($_POST['maskapai'] ?? ''));
+    $embarkasi        = htmlspecialchars(trim($_POST['embarkasi'] ?? ''));
     $kuota            = $_POST['kuota'] ?? 0;
-    $keterangan       = trim($_POST['keterangan'] ?? '');
+    $keterangan       = htmlspecialchars(trim($_POST['keterangan'] ?? ''));
 
     // Validasi data input
     if (!$id || !$paket_id || !$tanggal_berangkat || empty($maskapai) || empty($embarkasi)) {

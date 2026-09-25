@@ -8,13 +8,13 @@ $error = "";
 $success = "";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $nik           = trim($_POST['nik']);
-    $nama_lengkap  = trim($_POST['nama_lengkap']);
-    $jenis_kelamin = trim($_POST['jenis_kelamin']);
-    $no_hp         = trim($_POST['no_hp']);
-    $alamat        = trim($_POST['alamat']);
-    $username      = trim($_POST['username']);
-    $password      = trim($_POST['password']);
+    $nik           = htmlspecialchars(trim($_POST['nik']));
+    $nama_lengkap  = htmlspecialchars(trim($_POST['nama_lengkap']));
+    $jenis_kelamin = htmlspecialchars(trim($_POST['jenis_kelamin']));
+    $no_hp         = htmlspecialchars(trim($_POST['no_hp']));
+    $alamat        = htmlspecialchars(trim($_POST['alamat']));
+    $username      = htmlspecialchars(trim($_POST['username']));
+    $password      = htmlspecialchars(trim($_POST['password']));
 
     if (empty($nik) || empty($nama_lengkap) || empty($jenis_kelamin) || empty($username) || empty($password)) {
         $error = "NIK, Nama Lengkap, Jenis Kelamin, Username, dan Password wajib diisi!";

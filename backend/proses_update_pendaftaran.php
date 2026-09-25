@@ -14,8 +14,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $keberangkatan_id = !empty($_POST['keberangkatan_id']) ? intval($_POST['keberangkatan_id']) : null;
     
     // PERBAIKAN DI SINI: disesuaikan dengan name="tgl_daftar" dari form HTML
-    $tgl_daftar       = trim($_POST['tgl_daftar'] ?? ''); 
-    $status           = trim($_POST['status'] ?? '');
+    $tgl_daftar       = htmlspecialchars(trim($_POST['tgl_daftar'] ?? '')); 
+    $status           = htmlspecialchars(trim($_POST['status'] ?? ''));
 
     if (!$id || !$jamaah_id || !$paket_id || empty($tgl_daftar) || empty($status)) {
         echo "<script>alert('Jamaah, Paket, Tanggal Daftar, dan Status wajib diisi!'); window.history.back();</script>";

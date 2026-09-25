@@ -10,9 +10,9 @@ $auth = new Auth($db);
 $auth->checkRole(['jamaah']);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $paket_id = trim($_POST['pilih_paket_id'] ?? '');
-    $metode_bayar = trim($_POST['metode_pembayaran'] ?? 'Transfer Bank');
-    $opsi_bayar = trim($_POST['opsi_bayar'] ?? 'Valid');
+    $paket_id = htmlspecialchars(trim($_POST['pilih_paket_id'] ?? ''));
+    $metode_bayar = htmlspecialchars(trim($_POST['metode_pembayaran'] ?? 'Transfer Bank'));
+    $opsi_bayar = htmlspecialchars(trim($_POST['opsi_bayar'] ?? 'Valid'));
 
     $user_id = $_SESSION['user_id'] ?? $_SESSION['id'] ?? null;
     $jamaah_id = $_SESSION['jamaah_id'] ?? null;

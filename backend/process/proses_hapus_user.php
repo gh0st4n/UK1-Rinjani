@@ -18,7 +18,6 @@ if ($id) {
         // Redirect kembali ke tabel_user.php di luar folder process
         header("Location: ../tabel_user.php?status=deleted");
         exit();
-
     } catch (PDOException $e) {
         echo "<script>alert('Gagal menghapus data petugas!'); window.location.href='../tabel_user.php';</script>";
         exit();
@@ -27,5 +26,3 @@ if ($id) {
     header("Location: ../tabel_user.php");
     exit();
 }
-
-?>

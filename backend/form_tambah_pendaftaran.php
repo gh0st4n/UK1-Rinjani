@@ -1,4 +1,3 @@
-
 <?php
 require_once "database/connection.php";
 require_once "classes/Auth.php";
@@ -24,11 +23,11 @@ $keberangkatanList = $stmtKeberangkatan->fetchAll(PDO::FETCH_ASSOC);
 
 // Proses Form Submit
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $jamaah_id        = htmlspecialchars($_POST)['jamaah_id'] ?? '';
-    $paket_id         = htmlspecialchars($_POST)['paket_id'] ?? '';
+    $jamaah_id        = htmlspecialchars(trim($_POST['jamaah_id'] ?? ''));
+    $paket_id         = htmlspecialchars(trim($_POST['paket_id'] ?? ''));
     $keberangkatan_id = !empty($_POST['keberangkatan_id']) ? $_POST['keberangkatan_id'] : null;
-    $tgl_daftar       = htmlspecialchars($_POST)['tgl_daftar'] ?? date('Y-m-d');
-    $status           = htmlspecialchars($_POST)['status'] ?? 'Menunggu';
+    $tgl_daftar       = htmlspecialchars(trim($_POST['tgl_daftar'] ?? date('Y-m-d')));
+    $status           = htmlspecialchars(trim($_POST['status'] ?? 'Menunggu'));
 
     if (empty($jamaah_id) || empty($paket_id)) {
         $errorMessage = "Jamaah dan Paket Wajib dipilih!";
@@ -97,7 +96,8 @@ include "components/sidebar.php";
         letter-spacing: 0.5px;
     }
 
-    .form-control, .form-select {
+    .form-control,
+    .form-select {
         border-radius: 12px;
         border: 1px solid #cbd5e1;
         padding: 0.75rem 1rem;
@@ -105,7 +105,8 @@ include "components/sidebar.php";
         transition: all 0.2s ease;
     }
 
-    .form-control:focus, .form-select:focus {
+    .form-control:focus,
+    .form-select:focus {
         border-color: var(--secondary-emerald);
         box-shadow: 0 0 0 4px rgba(4, 120, 87, 0.1);
     }
@@ -206,8 +207,8 @@ include "components/sidebar.php";
                                         <option value="">-- Belum Dijadwalkan --</option>
                                         <?php foreach ($keberangkatanList as $kb): ?>
                                             <option value="<?= $kb['id']; ?>">
-                                                <?= date('d M Y', strtotime($kb['tanggal_berangkat'])); ?> 
-                                                <?= !empty($kb['keterangan']) ? '('.htmlspecialchars($kb['keterangan']).')' : ''; ?>
+                                                <?= date('d M Y', strtotime($kb['tanggal_berangkat'])); ?>
+                                                <?= !empty($kb['keterangan']) ? '(' . htmlspecialchars($kb['keterangan']) . ')' : ''; ?>
                                             </option>
                                         <?php endforeach; ?>
                                     </select>
@@ -236,8 +237,8 @@ include "components/sidebar.php";
 
                             <!-- Action Buttons -->
                             <div class="d-flex justify-content-end gap-2">
-                                          <a href="tabel_pendaftaran.php" class="btn btn-cancel px-4 py-2 d-flex align-items-center gap-2 shadow-sm">
-                                            <i class="fas fa-arrow-left"></i>Kembali</a>
+                                <a href="tabel_pendaftaran.php" class="btn btn-cancel px-4 py-2 d-flex align-items-center gap-2 shadow-sm">
+                                    <i class="fas fa-arrow-left"></i>Kembali</a>
                                 <button type="submit" class="btn btn-gold px-4 py-2.5 shadow-sm">
                                     <i class="fas fa-save me-1"></i> Simpan Pendaftaran
                                 </button>
@@ -250,7 +251,7 @@ include "components/sidebar.php";
     </div>
 </div>
 
-<?php 
+<?php
 include "components/footer.php";
-include "components/bottom.php"; 
+include "components/bottom.php";
 ?>

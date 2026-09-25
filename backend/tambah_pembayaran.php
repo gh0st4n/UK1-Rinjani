@@ -21,10 +21,10 @@ $pendaftaranList = $stmtPendaftaran->fetchAll(PDO::FETCH_ASSOC);
 
 // Proses Form Submit
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $pendaftaran_id = $_POST['pendaftaran_id'] ?? '';
-    $tanggal_bayar  = $_POST['tanggal_bayar'] ?? date('Y-m-d');
-    $nominal        = $_POST['nominal'] ?? '';
-    $status         = $_POST['status'] ?? 'Valid';
+    $pendaftaran_id = ($_POST['pendaftaran_id'] ?? '');
+    $tanggal_bayar  = ($_POST['tanggal_bayar'] ?? date('Y-m-d'));
+    $nominal        = htmlspecialchars($_POST['nominal'] ?? '');
+    $status         = htmlspecialchars($_POST['status'] ?? 'Valid');
     
     $bukti_transfer = '';
 

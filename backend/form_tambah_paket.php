@@ -1,4 +1,3 @@
-
 <?php
 require_once "database/connection.php";
 require_once "classes/Auth.php";
@@ -48,7 +47,8 @@ include "components/sidebar.php";
         font-size: 0.85rem;
     }
 
-    .form-control, .form-select {
+    .form-control,
+    .form-select {
         border-radius: 12px;
         border: 1px solid #cbd5e1;
         padding: 0.65rem 0.9rem;
@@ -56,7 +56,8 @@ include "components/sidebar.php";
         transition: all 0.2s ease;
     }
 
-    .form-control:focus, .form-select:focus {
+    .form-control:focus,
+    .form-select:focus {
         border-color: var(--secondary-emerald);
         box-shadow: 0 0 0 4px rgba(4, 120, 87, 0.1);
     }
@@ -203,12 +204,12 @@ include "components/sidebar.php";
 </div>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', function() {
         const hargaDisplay = document.getElementById('harga_display');
         const hargaReal = document.getElementById('harga');
 
         if (hargaDisplay && hargaReal) {
-            hargaDisplay.addEventListener('input', function (e) {
+            hargaDisplay.addEventListener('input', function(e) {
                 let value = this.value.replace(/\D/g, '');
                 hargaReal.value = value;
                 this.value = value ? new Intl.NumberFormat('id-ID').format(value) : '';
@@ -216,4 +217,4 @@ include "components/sidebar.php";
         }
     });
 </script>
-?>  
+?>

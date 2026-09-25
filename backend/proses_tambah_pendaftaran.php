@@ -11,8 +11,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $jamaah_id        = intval($_POST['jamaah_id'] ?? 0);
     $paket_id         = intval($_POST['paket_id'] ?? 0);
     $keberangkatan_id = !empty($_POST['keberangkatan_id']) ? intval($_POST['keberangkatan_id']) : null;
-    $tgl_daftar       = $_POST['tgl_daftar'] ?? date('Y-m-d');
-    $status           = $_POST['status'] ?? 'Menunggu';
+    $tgl_daftar       = htmlspecialchars(trim($_POST['tgl_daftar'] ?? date('Y-m-d')));
+    $status           = htmlspecialchars(trim($_POST['status'] ?? 'Menunggu'));
 
     if ($jamaah_id <= 0 || $paket_id <= 0) {
         echo "<script>alert('Pilih Jamaah dan Paket yang valid!'); window.history.back();</script>";

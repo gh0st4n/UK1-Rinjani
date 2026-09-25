@@ -18,7 +18,7 @@ include "components/header.php";
 include "components/sidebar.php";
 ?>
 
-<div class="main-wrapper">
+    <div class="main-wrapper">
     <?php include "components/topbar.php"; ?>
 
     <div class="content-body p-4">

@@ -196,10 +196,7 @@ include "components/sidebar.php";
             </div>
 
             <!-- Tombol Mengarah ke Halaman Baru pilih_layanan.php -->
-            <a href="pilih_layanan.php" class="btn btn-gold px-4 py-2.5 rounded-3 shadow-sm d-inline-flex align-items-center gap-2">
-                <i class="fas fa-plus-circle"></i>
-                <span>Daftar Layanan Baru</span>
-            </a>
+\
         </div>
 
         <?php if (!empty($successMessage)): ?>

@@ -9,12 +9,12 @@ $auth = new Auth($db);
 $auth->checkRole(['admin', 'petugas']);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $nama_paket = trim($_POST['nama_paket'] ?? '');
-    $jenis      = trim($_POST['jenis_paket'] ?? ''); 
+    $nama_paket = htmlspecialchars(trim($_POST['nama_paket'] ?? ''));
+    $jenis      = htmlspecialchars(trim($_POST['jenis_paket'] ?? '')); 
     $harga      = intval($_POST['harga'] ?? 0);
     $durasi     = intval($_POST['durasi'] ?? 0); // <-- BARU: Tangkap variabel durasi
     $kuota      = intval($_POST['kuota'] ?? 0);
-    $deskripsi  = trim($_POST['deskripsi'] ?? '');
+    $deskripsi  = htmlspecialchars(trim($_POST['deskripsi'] ?? ''));
 
     // 1. Validasi Input Tidak Boleh Kosong
     if (empty($nama_paket) || empty($jenis)) {

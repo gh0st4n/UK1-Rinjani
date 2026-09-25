@@ -1,4 +1,4 @@
-
+<!-- tabel_pendaftaran -->
 <?php
 require_once "database/connection.php";
 require_once "classes/Auth.php";
@@ -33,9 +33,9 @@ try {
 }
 
 // Hitung statistik pendaftaran & keberangkatan
-$totalPendaftaran     = count($pendaftaran);
-$sudahDijadwalkan    = 0;
-$belumDijadwalkan    = 0;
+$totalPendaftaran = count($pendaftaran);
+$sudahDijadwalkan = 0;
+$belumDijadwalkan = 0;
 
 foreach ($pendaftaran as $p) {
     if (!empty($p['tanggal_berangkat'])) {
@@ -44,7 +44,7 @@ foreach ($pendaftaran as $p) {
         $belumDijadwalkan++;
     }
 }
-   
+
 
 
 include "components/header.php";
@@ -52,7 +52,8 @@ include "components/sidebar.php";
 ?>
 
 <!-- Import Google Fonts & Icons -->
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
 
 <style>
     :root {
@@ -162,9 +163,11 @@ include "components/sidebar.php";
                     <div class="d-flex align-items-center justify-content-between">
                         <div>
                             <span class="text-muted small fw-semibold">Total Pendaftaran</span>
-                            <h3 class="fw-bold text-dark mb-0 mt-1"><?= $totalPendaftaran; ?> <span class="fs-6 fw-normal text-muted">Jamaah</span></h3>
+                            <h3 class="fw-bold text-dark mb-0 mt-1"><?= $totalPendaftaran; ?> <span
+                                    class="fs-6 fw-normal text-muted">Jamaah</span></h3>
                         </div>
-                        <div class="rounded-circle p-3 d-flex align-items-center justify-content-center" style="background-color: #f0fdf4; color: var(--secondary-emerald); width: 48px; height: 48px;">
+                        <div class="rounded-circle p-3 d-flex align-items-center justify-content-center"
+                            style="background-color: #f0fdf4; color: var(--secondary-emerald); width: 48px; height: 48px;">
                             <i class="fas fa-file-invoice fa-lg"></i>
                         </div>
                     </div>
@@ -175,9 +178,11 @@ include "components/sidebar.php";
                     <div class="d-flex align-items-center justify-content-between">
                         <div>
                             <span class="text-muted small fw-semibold">Sudah Dijadwalkan</span>
-                            <h3 class="fw-bold text-dark mb-0 mt-1"><?= $sudahDijadwalkan; ?> <span class="fs-6 fw-normal text-muted">Jamaah</span></h3>
+                            <h3 class="fw-bold text-dark mb-0 mt-1"><?= $sudahDijadwalkan; ?> <span
+                                    class="fs-6 fw-normal text-muted">Jamaah</span></h3>
                         </div>
-                        <div class="rounded-circle p-3 d-flex align-items-center justify-content-center" style="background-color: #e0f2fe; color: #0284c7; width: 48px; height: 48px;">
+                        <div class="rounded-circle p-3 d-flex align-items-center justify-content-center"
+                            style="background-color: #e0f2fe; color: #0284c7; width: 48px; height: 48px;">
                             <i class="fas fa-plane-departure fa-lg"></i>
                         </div>
                     </div>
@@ -188,9 +193,11 @@ include "components/sidebar.php";
                     <div class="d-flex align-items-center justify-content-between">
                         <div>
                             <span class="text-muted small fw-semibold">Belum Dijadwalkan</span>
-                            <h3 class="fw-bold text-dark mb-0 mt-1"><?= $belumDijadwalkan; ?> <span class="fs-6 fw-normal text-muted">Jamaah</span></h3>
+                            <h3 class="fw-bold text-dark mb-0 mt-1"><?= $belumDijadwalkan; ?> <span
+                                    class="fs-6 fw-normal text-muted">Jamaah</span></h3>
                         </div>
-                        <div class="rounded-circle p-3 d-flex align-items-center justify-content-center" style="background-color: #fff7ed; color: #ea580c; width: 48px; height: 48px;">
+                        <div class="rounded-circle p-3 d-flex align-items-center justify-content-center"
+                            style="background-color: #fff7ed; color: #ea580c; width: 48px; height: 48px;">
                             <i class="fas fa-clock fa-lg"></i>
                         </div>
                     </div>
@@ -206,7 +213,9 @@ include "components/sidebar.php";
                         <h5 class="fw-bold text-dark mb-0">Daftar Transaksi Pendaftaran</h5>
                         <p class="text-muted small mb-0">Data pendaftaran jamaah beserta status porsi terkini</p>
                     </div>
-                    <span class="badge bg-light text-dark border px-3 py-2 rounded-pill fw-semibold"><?= $totalPendaftaran; ?> Pendaftaran</span>
+                    <span
+                        class="badge bg-light text-dark border px-3 py-2 rounded-pill fw-semibold"><?= $totalPendaftaran; ?>
+                        Pendaftaran</span>
                 </div>
 
                 <div class="table-responsive">
@@ -223,21 +232,30 @@ include "components/sidebar.php";
                             </tr>
                         </thead>
                         <tbody>
+
+                            <?php
+                            // biasakan melakukan vardump apabila terjadi data yang masih NULL, 
+                            // var_dump($pendaftaran);
+
+                            ?>
                             <?php if (count($pendaftaran) > 0): ?>
-                                <?php $no = 1; foreach ($pendaftaran as $row): ?>
+                                <?php $no = 1;
+                                foreach ($pendaftaran as $row): ?>
                                     <tr class="border-top">
                                         <td class="py-3 fw-bold text-secondary"><?= $no++; ?></td>
-                                        
+
                                         <!-- Nama Jamaah & NIK -->
                                         <td class="py-3">
                                             <div class="fw-bold text-dark"><?= htmlspecialchars($row['nama_lengkap']); ?></div>
-                                            <div class="text-muted small font-monospace">NIK: <?= htmlspecialchars($row['nik']); ?></div>
+                                            <div class="text-muted small font-monospace">NIK:
+                                                <?= htmlspecialchars($row['nik']); ?></div>
                                         </td>
 
                                         <!-- Nama Paket -->
                                         <td class="py-3">
                                             <div class="fw-bold text-dark"><?= htmlspecialchars($row['nama_paket']); ?></div>
-                                            <span class="badge bg-light text-secondary border mt-1" style="font-size: 11px;"><?= htmlspecialchars($row['jenis']); ?></span>
+                                            <span class="badge bg-light text-secondary border mt-1"
+                                                style="font-size: 11px;"><?= htmlspecialchars($row['jenis']); ?></span>
                                         </td>
 
                                         <!-- Tgl Daftar -->
@@ -252,36 +270,37 @@ include "components/sidebar.php";
                                                 <i class="fas fa-plane-departure me-1 text-muted"></i>
                                                 <?= date('d M Y', strtotime($row['tanggal_berangkat'])); ?>
                                             <?php else: ?>
-                                                <span class="badge bg-light text-muted fw-normal fst-italic">Belum dijadwalkan</span>
+                                                <span class="badge bg-light text-muted fw-normal fst-italic">Belum
+                                                    dijadwalkan</span>
                                             <?php endif; ?>
                                         </td>
 
                                         <!-- Status Badge -->
                                         <td class="py-3">
-                                            <?php 
-                                                $st = strtolower($row['status'] ?? 'menunggu');
-                                                
-                                                switch ($st) {
-                                                    case 'terdaftar':
-                                                    case 'aktif':
-                                                        $bgClass = "background-color: #d1fae5; color: #059669; border: 1px solid #a7f3d0;";
-                                                        $iconClass = "fas fa-check-circle";
-                                                        break;
-                                                    case 'berangkat':
-                                                        $bgClass = "background-color: #e0f2fe; color: #0284c7; border: 1px solid #bae6fd;";
-                                                        $iconClass = "fas fa-plane-departure";
-                                                        break;
-                                                    case 'selesai':
-                                                    case 'pulang':
-                                                        $bgClass = "background-color: #f3e8ff; color: #9333ea; border: 1px solid #e9d5ff;";
-                                                        $iconClass = "fas fa-plane-arrival";
-                                                        break;
-                                                    case 'menunggu':
-                                                    default:
-                                                        $bgClass = "background-color: #fff7ed; color: #ea580c; border: 1px solid #ffedd5;";
-                                                        $iconClass = "fas fa-clock";
-                                                        break;
-                                                }
+                                            <?php
+                                            $st = strtolower($row['status'] ?? 'menunggu');
+
+                                            switch ($st) {
+                                                case 'terdaftar':
+                                                case 'aktif':
+                                                    $bgClass = "background-color: #d1fae5; color: #059669; border: 1px solid #a7f3d0;";
+                                                    $iconClass = "fas fa-check-circle";
+                                                    break;
+                                                case 'berangkat':
+                                                    $bgClass = "background-color: #e0f2fe; color: #0284c7; border: 1px solid #bae6fd;";
+                                                    $iconClass = "fas fa-plane-departure";
+                                                    break;
+                                                case 'selesai':
+                                                case 'pulang':
+                                                    $bgClass = "background-color: #f3e8ff; color: #9333ea; border: 1px solid #e9d5ff;";
+                                                    $iconClass = "fas fa-plane-arrival";
+                                                    break;
+                                                case 'menunggu':
+                                                default:
+                                                    $bgClass = "background-color: #fff7ed; color: #ea580c; border: 1px solid #ffedd5;";
+                                                    $iconClass = "fas fa-clock";
+                                                    break;
+                                            }
                                             ?>
                                             <span class="badge rounded-pill px-3 py-2 fw-semibold" style="<?= $bgClass; ?>">
                                                 <i class="<?= $iconClass; ?> me-1"></i> <?= ucfirst($st); ?>
@@ -291,16 +310,25 @@ include "components/sidebar.php";
                                         <!-- Tombol Aksi -->
                                         <td class="py-3 text-center">
                                             <div class="d-flex justify-content-center gap-1">
-                                                <a href="form_update_pendaftaran.php?id=<?= $row['id']; ?>" class="btn btn-sm action-btn-edit px-2.5 py-1.5" title="Edit Data">
+                                                <!-- <a href="form_update_pendaftaran.php?id=<?= $row['id']; ?>" class="btn btn-sm action-btn-edit px-2.5 py-1.5" title="Edit Data">
                                                     <i class="fas fa-edit"></i>
-                                                </a>
-                                                <?php if ($userRole === 'admin'): ?>
-                                                    <a href="delete_pendaftaran.php?id=<?= $row['id']; ?>" class="btn btn-sm action-btn-delete px-2.5 py-1.5" onclick="return confirm('Yakin ingin menghapus data pendaftaran ini?');" title="Hapus Data">
-                                                        <i class="fas fa-trash"></i>
-                                                    </a>
+                                                </a> -->
+                                                <!-- <a href="delete_pendaftaran.php?id=<?= $row['id']; ?>"
+                                                    class="btn btn-sm action-btn-delete px-2.5 py-1.5"
+                                                    onclick="return confirm('Yakin ingin menghapus data pendaftaran ini?');"
+                                                    title="Hapus Data">
+                                                    <i class="fas fa-trash"></i>
+                                                </a> -->
 
-                                                     <a href="form_tambah_jadwal.php?id_pendaftaran=<?= $row['id']; ?>" class="btn btn-sm action-btn-edit px-2.5 py-1.5" title="Buat Jadwal">
+                                                <?php if (empty($row['tanggal_berangkat'])): ?>
+                                                    <a href="form_tambah_jadwal.php?id_pendaftaran=<?= $row['id']; ?>"
+                                                        class="btn btn-sm action-btn-edit px-2.5 py-1.5" title="Buat Jadwal">
                                                         Buat Jadwal
+                                                    </a>
+                                                <?php else: ?>
+                                                    <a href="#"
+                                                        class="btn btn-sm action-btn-disabled px-2.5 py-1.5">
+                                                        Sudah Terjadwal
                                                     </a>
                                                 <?php endif; ?>
                                             </div>
@@ -311,8 +339,10 @@ include "components/sidebar.php";
                                 <tr class="border-top">
                                     <td colspan="7" class="text-center py-5 text-muted">
                                         <div class="my-3">
-                                            <i class="fas fa-clipboard-check fa-3x text-light mb-3" style="color: #cbd5e1 !important;"></i>
-                                            <p class="mb-0 fw-semibold text-secondary">Belum ada data pendaftaran terdaftar.</p>
+                                            <i class="fas fa-clipboard-check fa-3x text-light mb-3"
+                                                style="color: #cbd5e1 !important;"></i>
+                                            <p class="mb-0 fw-semibold text-secondary">Belum ada data pendaftaran terdaftar.
+                                            </p>
                                         </div>
                                     </td>
                                 </tr>
@@ -325,7 +355,7 @@ include "components/sidebar.php";
     </div>
 </div>
 
-<?php 
+<?php
 include "components/footer.php";
-include "components/bottom.php"; 
+include "components/bottom.php";
 ?>

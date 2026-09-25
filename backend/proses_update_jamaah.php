@@ -9,11 +9,11 @@ $auth->checkRole(['admin', 'petugas']);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id            = intval($_POST['id'] ?? 0);
-    $nik           = trim($_POST['nik'] ?? '');
-    $nama_lengkap  = trim($_POST['nama_lengkap'] ?? '');
-    $jenis_kelamin = trim($_POST['jenis_kelamin'] ?? '');
-    $no_hp         = trim($_POST['no_hp'] ?? '');
-    $alamat        = trim($_POST['alamat'] ?? '');
+    $nik           = htmlspecialchars(trim($_POST['nik'] ?? ''));
+    $nama_lengkap  = htmlspecialchars(trim($_POST['nama_lengkap'] ?? ''));
+    $jenis_kelamin = htmlspecialchars(trim($_POST['jenis_kelamin'] ?? ''));
+    $no_hp         = htmlspecialchars(trim($_POST['no_hp'] ?? ''));
+    $alamat        = htmlspecialchars(trim($_POST['alamat'] ?? ''));
 
     if (!$id || empty($nik) || empty($nama_lengkap) || empty($jenis_kelamin)) {
         echo "<script>alert('NIK, Nama Lengkap, dan Jenis Kelamin wajib diisi!'); window.history.back();</script>";

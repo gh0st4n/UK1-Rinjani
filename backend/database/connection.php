@@ -3,14 +3,16 @@
 header('X-Frame-Options: Deny');
 header("Content-Security-Policy: frame-ancestors 'none';");
 
-class Database {
+class Database
+{
     private $host = "localhost";
     private $db_name = "travel_haji_umroh";
     private $username = "root";
     private $password = "";
     public $conn;
 
-    public function getConnection() {
+    public function getConnection()
+    {
         $this->conn = null;
         try {
             $this->conn = new PDO(
@@ -28,4 +30,3 @@ class Database {
         return $this->conn;
     }
 }
-?>

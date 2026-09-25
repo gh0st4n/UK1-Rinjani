@@ -18,7 +18,6 @@ if ($id) {
         // Redirect kembali ke tabel_keberangkatan.php
         header("Location: ../tabel_keberangkatan.php?status=deleted");
         exit();
-
     } catch (PDOException $e) {
         echo "<script>alert('Gagal menghapus data keberangkatan!'); window.location.href='../tabel_keberangkatan.php';</script>";
         exit();

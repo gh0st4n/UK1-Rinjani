@@ -1,4 +1,3 @@
-
 <?php
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -6,6 +5,15 @@ if (session_status() === PHP_SESSION_NONE) {
 
 $current_page = basename($_SERVER['PHP_SELF']);
 $role = $_SESSION['role'] ?? '';
+
+// Helper function untuk menentukan class active
+function isActive($pages, $current_page)
+{
+    if (is_array($pages)) {
+        return in_array($current_page, $pages) ? 'active' : '';
+    }
+    return $current_page === $pages ? 'active' : '';
+}
 ?>
 
 <style>
@@ -16,7 +24,7 @@ $role = $_SESSION['role'] ?? '';
         flex-shrink: 0;
         display: flex;
         flex-direction: column;
-        align-self: stretch; /* Supaya tinggi sejajar dengan app-container */
+        align-self: stretch;
         z-index: 1050;
     }
 
@@ -115,9 +123,10 @@ $role = $_SESSION['role'] ?? '';
     </div>
 
     <ul class="sidebar-nav">
+        <!-- MENU UTAMA -->
         <li class="sidebar-menu-title">MENU UTAMA</li>
         <li>
-            <a href="index.php" class="<?= $current_page == 'index.php' ? 'active' : ''; ?>">
+            <a href="index.php" class="<?= isActive('index.php', $current_page); ?>">
                 <i class="fas fa-tachometer-alt"></i> Dashboard
             </a>
         </li>
@@ -126,89 +135,92 @@ $role = $_SESSION['role'] ?? '';
         <?php if ($role === 'admin' || $role === 'petugas'): ?>
             <li class="sidebar-menu-title">MANAJEMEN DATA</li>
             <li>
-                <a href="tabel_jamaah.php" class="<?= $current_page == 'tabel_jamaah.php' ? 'active' : ''; ?>">
+                <a href="tabel_jamaah.php" class="<?= isActive('tabel_jamaah.php', $current_page); ?>">
                     <i class="fas fa-users"></i> Data Jamaah
                 </a>
             </li>
 
             <?php if ($role === 'admin'): ?>
                 <li>
-                    <a href="tabel_user.php" class="<?= ($current_page == 'tabel_user.php' || $current_page == 'form_update_user.php') ? 'active' : ''; ?>">
+                    <a href="tabel_user.php" class="<?= isActive(['tabel_user.php', 'form_update_user.php'], $current_page); ?>">
                         <i class="fas fa-user-shield"></i> Kelola Petugas
                     </a>
                 </li>
             <?php else: ?>
                 <li>
-                    <a href="profile_petugas.php" class="<?= $current_page == 'profile_petugas.php' ? 'active' : ''; ?>">
-                        <i class="fas fa-cog"></i> Settings
+                    <a href="profile_petugas.php" class="<?= isActive('profile_petugas.php', $current_page); ?>">
+                        <i class="fas fa-cog"></i> Pengaturan Profil
                     </a>
                 </li>
             <?php endif; ?>
-            
+
             <li>
-                <a href="tabel_paket.php" class="<?= ($current_page == 'tabel_paket.php' || $current_page == 'form_tambah_paket.php' || $current_page == 'form_update_paket.php') ? 'active' : ''; ?>">
+                <a href="tabel_paket.php" class="<?= isActive(['tabel_paket.php', 'form_tambah_paket.php', 'form_update_paket.php'], $current_page); ?>">
                     <i class="fas fa-box"></i> Paket Haji/Umroh
                 </a>
             </li>
             <li>
-                <a href="tabel_pendaftaran.php" class="<?= $current_page == 'tabel_pendaftaran.php' ? 'active' : ''; ?>">
+                <a href="tabel_pendaftaran.php" class="<?= isActive(['tabel_pendaftaran.php', 'form_tambah_jadwal.php', 'form_update_pendaftaran.php'], $current_page); ?>">
                     <i class="fas fa-clipboard-list"></i> Pendaftaran
                 </a>
             </li>
 
             <li class="sidebar-menu-title">TRANSAKSI & LAPORAN</li>
-            <?php if ($role === 'admin'): ?>
-                <li>
-                    <a href="tabel_pembayaran.php" class="<?= $current_page == 'tabel_pembayaran.php' ? 'active' : ''; ?>">
-                        <i class="fas fa-wallet"></i> Pembayaran
-                    </a>
-                </li>
-            <?php endif; ?>
             <li>
-                <a href="tabel_keberangkatan.php" class="<?= $current_page == 'tabel_keberangkatan.php' ? 'active' : ''; ?>">
+                <a href="tabel_pembayaran.php" class="<?= isActive('tabel_pembayaran.php', $current_page); ?>">
+                    <i class="fas fa-wallet"></i> Pembayaran
+                </a>
+            </li>
+            <li>
+                <a href="tabel_keberangkatan.php" class="<?= isActive('tabel_keberangkatan.php', $current_page); ?>">
                     <i class="fas fa-calendar-alt"></i> Jadwal Keberangkatan
                 </a>
             </li>
             <li>
-                <a href="tabel_laporan.php" class="<?= $current_page == 'tabel_laporan.php' ? 'active' : ''; ?>">
+                <a href="tabel_laporan.php" class="<?= isActive('tabel_laporan.php', $current_page); ?>">
                     <i class="fas fa-print"></i> Generate Laporan
                 </a>
             </li>
 
-        <!-- MENU KHUSUS JAMAAH -->
+            <!-- MENU KHUSUS JAMAAH -->
         <?php elseif ($role === 'jamaah'): ?>
             <li class="sidebar-menu-title">LAYANAN JAMAAH</li>
             <li>
-                <a href="riwayat_pendaftaran.php" class="<?= $current_page == 'riwayat_pendaftaran.php' ? 'active' : ''; ?>">
-                    <i class="fas fa-history"></i> Pendaftaran 
+                <a href="riwayat_pendaftaran.php" class="<?= isActive('riwayat_pendaftaran.php', $current_page); ?>">
+                    <i class="fas fa-history"></i> Pendaftaran
                 </a>
             </li>
             <li>
-                <a href="riwayat_pembayaran.php" class="<?= $current_page == 'riwayat_pembayaran.php' ? 'active' : ''; ?>">
+                <a href="riwayat_pembayaran.php" class="<?= isActive('riwayat_pembayaran.php', $current_page); ?>">
                     <i class="fas fa-receipt"></i> Status Pembayaran
                 </a>
             </li>
             <li>
-                <a href="jadwal_jamaah.php" class="<?= $current_page == 'jadwal_jamaah.php' ? 'active' : ''; ?>">
+                <a href="jadwal_jamaah.php" class="<?= isActive('jadwal_jamaah.php', $current_page); ?>">
                     <i class="fas fa-calendar-check"></i> Jadwal
                 </a>
             </li>
 
             <li class="sidebar-menu-title">PENGATURAN</li>
             <li>
-                <a href="profile_jamaah.php" class="<?= $current_page == 'profile_jamaah.php' ? 'active' : ''; ?>">
+                <a href="profile_jamaah.php" class="<?= isActive('profile_jamaah.php', $current_page); ?>">
                     <i class="fas fa-user-cog"></i> Profil
                 </a>
             </li>
-        <?php endif; ?>
+  
 
+        <!-- NAVIGASI SISTEM -->
         <li class="sidebar-menu-title">SISTEM</li>
+        <li>
+            <a href="../index.php">
+                <i class="fas fa-angle-left"></i> Halaman Utama
+            </a>
+          <?php endif; ?>
+        </li>
         <li>
             <a href="logout.php" onclick="return confirm('Yakin ingin logout?');" class="text-danger">
                 <i class="fas fa-sign-out-alt text-danger"></i> Logout
             </a>
         </li>
     </ul>
-
-
 </aside>

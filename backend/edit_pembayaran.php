@@ -1,4 +1,3 @@
-
 <!-- edit_pembayaran.php -->
 <?php
 require_once "database/connection.php";
@@ -49,8 +48,8 @@ if (!$pembayaran) {
 // Perhitungan Sisa Pembayaran Default
 $hargaPaket = (float)($pembayaran['harga_paket'] ?? 0);
 $nominalDibayar = (float)($pembayaran['nominal'] ?? 0);
-$sisaPembayaranDefault = isset($pembayaran['sisa_pembayaran']) && $pembayaran['sisa_pembayaran'] !== null 
-    ? $pembayaran['sisa_pembayaran'] 
+$sisaPembayaranDefault = isset($pembayaran['sisa_pembayaran']) && $pembayaran['sisa_pembayaran'] !== null
+    ? $pembayaran['sisa_pembayaran']
     : max(0, $hargaPaket - $nominalDibayar);
 
 include "components/header.php";
@@ -117,18 +116,18 @@ include "components/sidebar.php";
                         <label for="sisa_pembayaran_display" class="form-label small fw-bold" style="color: #1a4d36;">Sisa Pembayaran (Rp)</label>
                         <div class="input-group input-group-lg">
                             <span class="input-group-text fw-bold fs-6" style="background-color: #1a4d36; color: #ffffff; border: none;">Rp</span>
-                            <input 
-                                type="text" 
-                                class="form-control fs-6 fw-bold text-danger" 
-                                id="sisa_pembayaran_display" 
-                                inputmode="numeric" 
-                                placeholder="Contoh: 5.000.000" 
+                            <input
+                                type="text"
+                                class="form-control fs-6 fw-bold text-danger"
+                                id="sisa_pembayaran_display"
+                                inputmode="numeric"
+                                placeholder="Contoh: 5.000.000"
                                 value="<?= number_format($sisaPembayaranDefault, 0, ',', '.'); ?>"
                                 required>
-                            <input 
-                                type="hidden" 
-                                id="sisa_pembayaran" 
-                                name="sisa_pembayaran" 
+                            <input
+                                type="hidden"
+                                id="sisa_pembayaran"
+                                name="sisa_pembayaran"
                                 value="<?= htmlspecialchars($sisaPembayaranDefault); ?>">
                         </div>
                         <small class="text-muted fs-7 mt-1 d-block">*Apabila status diubah ke Lunas, sisa pembayaran disarankan menjadi 0.</small>
@@ -150,27 +149,27 @@ include "components/sidebar.php";
 </div>
 
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-    const sisaDisplay = document.getElementById('sisa_pembayaran_display');
-    const sisaReal = document.getElementById('sisa_pembayaran');
-    const statusSelect = document.getElementById('status');
+    document.addEventListener('DOMContentLoaded', function() {
+        const sisaDisplay = document.getElementById('sisa_pembayaran_display');
+        const sisaReal = document.getElementById('sisa_pembayaran');
+        const statusSelect = document.getElementById('status');
 
-    if (sisaDisplay && sisaReal) {
-        sisaDisplay.addEventListener('input', function (e) {
-            let value = this.value.replace(/\D/g, '');
-            sisaReal.value = value ? value : '0';
-            this.value = value ? new Intl.NumberFormat('id-ID').format(value) : '0';
-        });
-    }
+        if (sisaDisplay && sisaReal) {
+            sisaDisplay.addEventListener('input', function(e) {
+                let value = this.value.replace(/\D/g, '');
+                sisaReal.value = value ? value : '0';
+                this.value = value ? new Intl.NumberFormat('id-ID').format(value) : '0';
+            });
+        }
 
-    if (statusSelect) {
-        statusSelect.addEventListener('change', function () {
-            if (this.value === 'Lunas') {
-                sisaReal.value = '0';
-                sisaDisplay.value = '0';
-            }
-        });
-    }
-});
+        if (statusSelect) {
+            statusSelect.addEventListener('change', function() {
+                if (this.value === 'Lunas') {
+                    sisaReal.value = '0';
+                    sisaDisplay.value = '0';
+                }
+            });
+        }
+    });
 </script>
 ?>

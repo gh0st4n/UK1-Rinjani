@@ -1,4 +1,4 @@
-
+<!-- form_update_pendaftaran.php -->
 <?php
 require_once "database/connection.php";
 require_once "classes/Auth.php";
@@ -41,16 +41,17 @@ $paketList = $stmtPaket->fetchAll(PDO::FETCH_ASSOC);
 // Tanggal hari ini (YYYY-MM-DD)
 $today = date('Y-m-d');
 
-// Mengambil nilai tanggal keberangkatan & kepulangan
+// Mengambil nilai tanggal keberangkatan & kepulangan dari DB
 $tglBerangkat = $jadwal['tanggal_berangkat'] ?? $jadwal['tgl_keberangkatan'] ?? '';
 $tglPulang    = $jadwal['tgl_kepulangan'] ?? $jadwal['tanggal_kepulangan'] ?? '';
 
-// Menghitung tanggal minimum kepulangan (minimal H+1 dari tanggal keberangkatan)
-if (!empty($tglBerangkat)) {
-    $minPulang = date('Y-m-d', strtotime($tglBerangkat . ' +1 day'));
-} else {
-    $minPulang = date('Y-m-d', strtotime($today . ' +1 day'));
-}
+// Menentukan batas minimum tanggal keberangkatan
+// Jika tanggal lama di DB sudah lewat, izinkan minimal sesuai tanggal DB agar tidak merusak data lama
+$minBerangkat = (!empty($tglBerangkat) && $tglBerangkat < $today) ? $tglBerangkat : $today;
+
+// Menghitung tanggal minimum kepulangan (minimal H+9 dari tanggal keberangkatan saat ini)
+$refBerangkat = !empty($tglBerangkat) ? $tglBerangkat : $today;
+$minPulang    = date('Y-m-d', strtotime($refBerangkat . ' +9 days'));
 
 include "components/header.php";
 include "components/sidebar.php";
@@ -87,14 +88,16 @@ include "components/sidebar.php";
         border: 1px solid #e2e8f0;
     }
 
-    .form-control, .form-select {
+    .form-control,
+    .form-select {
         border-radius: 12px;
         border: 1px solid #cbd5e1;
         padding: 0.65rem 0.9rem;
         font-size: 0.925rem;
     }
 
-    .form-control:focus, .form-select:focus {
+    .form-control:focus,
+    .form-select:focus {
         border-color: var(--secondary-emerald);
         box-shadow: 0 0 0 4px rgba(4, 120, 87, 0.1);
     }
@@ -135,14 +138,14 @@ include "components/sidebar.php";
         <div class="card form-card border-0 shadow-sm bg-white">
             <div class="card-body p-4">
                 <form action="proses_update_jadwal.php" method="POST" id="formJadwal">
-                    <input type="hidden" name="id" value="<?= $jadwal['id']; ?>">
+                    <input type="hidden" name="id" value="<?= htmlspecialchars($jadwal['id']); ?>">
 
                     <div class="row g-3">
                         <!-- Pilih Paket Travel -->
                         <div class="col-12 mb-2">
                             <label for="paket_id" class="form-label fw-semibold">Pilih Paket Travel <span class="text-danger">*</span></label>
                             <select class="form-select" id="paket_id" name="paket_id" required>
-                                <option value="">-- Pilih Paket Haji / Umroh --</option>
+                                <option value="" disabled>-- Pilih Paket Haji / Umroh --</option>
                                 <?php foreach ($paketList as $p): ?>
                                     <option value="<?= $p['id']; ?>" <?= ($p['id'] == $jadwal['paket_id']) ? 'selected' : ''; ?>>
                                         <?= htmlspecialchars($p['nama_paket']); ?>
@@ -154,50 +157,71 @@ include "components/sidebar.php";
                         <!-- Tanggal Keberangkatan -->
                         <div class="col-md-6 mb-2">
                             <label for="tanggal_berangkat" class="form-label fw-semibold">Tanggal Keberangkatan <span class="text-danger">*</span></label>
-                            <input type="date" class="form-control" id="tanggal_berangkat" name="tanggal_berangkat" 
-                                   min="<?= $today; ?>" 
-                                   value="<?= htmlspecialchars($tglBerangkat); ?>" 
-                                   onkeydown="return false;" required>
+                            <input type="date" class="form-control" id="tanggal_berangkat" name="tanggal_berangkat"
+                                min="<?= $minBerangkat; ?>"
+                                value="<?= htmlspecialchars($tglBerangkat); ?>"
+                                onkeydown="return false;" required>
                         </div>
 
                         <!-- Tanggal Kepulangan -->
                         <div class="col-md-6 mb-2">
-                            <label for="tgl_kepulangan" class="form-label fw-semibold">Tanggal Kepulangan (Estimasi)</label>
-                            <input type="date" class="form-control" id="tgl_kepulangan" name="tgl_kepulangan" 
-                                   min="<?= $minPulang; ?>" 
-                                   value="<?= htmlspecialchars($tglPulang); ?>" 
-                                   onkeydown="return false;">
+                            <label for="tgl_kepulangan" class="form-label fw-semibold">Tanggal Kepulangan (Estimasi Min. H+9)</label>
+                            <input type="date" class="form-control" id="tgl_kepulangan" name="tgl_kepulangan"
+                                min="<?= $minPulang; ?>"
+                                value="<?= htmlspecialchars($tglPulang); ?>"
+                                onkeydown="return false;">
                         </div>
 
-                        <!-- Nama Maskapai -->
+                        <!-- Nama Maskapai (Dropdown agar sama dengan Form Tambah) -->
                         <div class="col-md-4 mb-2">
                             <label for="maskapai" class="form-label fw-semibold">Nama Maskapai <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="maskapai" name="maskapai" 
-                                   placeholder="Contoh: Saudia Airlines / Oman Air" 
-                                   value="<?= htmlspecialchars($jadwal['maskapai'] ?? ''); ?>" required>
+                            <?php $currMaskapai = $jadwal['maskapai'] ?? ''; ?>
+                            <select class="form-select" id="maskapai" name="maskapai" required>
+                                <option value="" disabled>-- Pilih Maskapai --</option>
+                                <?php
+                                $maskapaiArr = ['Saudia Airlines', 'Garuda Indonesia', 'Qatar Airways', 'Emirates', 'Etihad Airways', 'Lion Air', 'Batik Air', 'Oman Air'];
+                                foreach ($maskapaiArr as $m):
+                                ?>
+                                    <option value="<?= $m; ?>" <?= ($currMaskapai == $m) ? 'selected' : ''; ?>><?= $m; ?></option>
+                                <?php endforeach; ?>
+                            </select>
                         </div>
 
-                        <!-- Embarkasi / Bandara -->
+                        <!-- Embarkasi / Bandara (Dropdown) -->
                         <div class="col-md-4 mb-2">
                             <label for="embarkasi" class="form-label fw-semibold">Embarkasi / Bandara <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="embarkasi" name="embarkasi" 
-                                   placeholder="Contoh: Kertajati (KJT) / Soekarno-Hatta (CGK)" 
-                                   value="<?= htmlspecialchars($jadwal['embarkasi'] ?? ''); ?>" required>
+                            <?php $currEmbarkasi = $jadwal['embarkasi'] ?? ''; ?>
+                            <select class="form-select" id="embarkasi" name="embarkasi" required>
+                                <option value="" disabled>-- Pilih Embarkasi --</option>
+                                <?php
+                                $embarkasiArr = ['Jakarta (CGK)', 'Surabaya (SUB)', 'Medan (KNO)', 'Makassar (UPG)', 'Solo (SOC)', 'Kertajati (KJT)', 'Padang (PDG)', 'Palembang (PLM)'];
+                                foreach ($embarkasiArr as $emb):
+                                ?>
+                                    <option value="<?= $emb; ?>" <?= ($currEmbarkasi == $emb) ? 'selected' : ''; ?>><?= $emb; ?></option>
+                                <?php endforeach; ?>
+                            </select>
                         </div>
 
-                        <!-- Kuota Penerbangan -->
+                        <!-- Kuota Penerbangan (Dropdown) -->
                         <div class="col-md-4 mb-2">
                             <label for="kuota" class="form-label fw-semibold">Kuota Penerbangan <span class="text-danger">*</span></label>
-                            <?php $kuotaVal = $jadwal['kuota_penerbangan'] ?? $jadwal['kuota'] ?? 0; ?>
-                            <input type="number" class="form-control" id="kuota" name="kuota" min="1" 
-                                   value="<?= htmlspecialchars($kuotaVal); ?>" required>
+                            <?php $currKuota = $jadwal['kuota_penerbangan'] ?? $jadwal['kuota'] ?? ''; ?>
+                            <select class="form-select" id="kuota" name="kuota" required>
+                                <option value="" disabled>-- Pilih Kuota --</option>
+                                <?php
+                                $kuotaArr = ['20', '30', '40', '45', '50', '60', '90'];
+                                foreach ($kuotaArr as $k):
+                                ?>
+                                    <option value="<?= $k; ?>" <?= ($currKuota == $k) ? 'selected' : ''; ?>><?= $k; ?> Pax</option>
+                                <?php endforeach; ?>
+                            </select>
                         </div>
 
                         <!-- Catatan / Keterangan Tambahan -->
                         <div class="col-12 mb-3">
                             <label for="keterangan" class="form-label fw-semibold">Catatan / Keterangan Tambahan</label>
-                            <textarea class="form-control" id="keterangan" name="keterangan" rows="3" 
-                                      placeholder="Tambahkan instruksi berkumpul di bandara, jam check-in, atau info penting lainnya..."><?= htmlspecialchars($jadwal['keterangan'] ?? ''); ?></textarea>
+                            <textarea class="form-control" id="keterangan" name="keterangan" rows="3"
+                                placeholder="Tambahkan instruksi berkumpul di bandara, jam check-in, atau info penting lainnya..."><?= htmlspecialchars($jadwal['keterangan'] ?? ''); ?></textarea>
                         </div>
                     </div>
 
@@ -217,55 +241,70 @@ include "components/sidebar.php";
 </div>
 
 <script>
-document.addEventListener("DOMContentLoaded", function () {
-    const form = document.getElementById("formJadwal");
-    const inputBerangkat = document.getElementById("tanggal_berangkat");
-    const inputKepulangan = document.getElementById("tgl_kepulangan");
+    document.addEventListener("DOMContentLoaded", function() {
+        const form = document.getElementById("formJadwal");
+        const inputBerangkat = document.getElementById("tanggal_berangkat");
+        const inputKepulangan = document.getElementById("tgl_kepulangan");
 
-    // Fungsi menghitung tanggal H+1
-    function getNextDay(dateString) {
-        if (!dateString) return "";
-        let date = new Date(dateString);
-        date.setDate(date.getDate() + 1);
-        return date.toISOString().split("T")[0];
-    }
+        // Tanggal asal dari database sebelum diedit
+        const originalBerangkatVal = "<?= $tglBerangkat; ?>";
 
-    // Setiap tanggal keberangkatan berubah
-    inputBerangkat.addEventListener("change", function () {
-        const valBerangkat = this.value;
-        if (valBerangkat) {
-            const minPulangVal = getNextDay(valBerangkat);
-            inputKepulangan.min = minPulangVal;
+        // Fungsi menambah hari berdasarkan format YYYY-MM-DD
+        function addDays(dateStr, days) {
+            if (!dateStr) return "";
+            const parts = dateStr.split("-");
+            const date = new Date(parts[0], parts[1] - 1, parts[2]);
+            date.setDate(date.getDate() + days);
 
-            // Jika tanggal kepulangan <= tanggal keberangkatan, atur ke H+1
-            if (inputKepulangan.value && inputKepulangan.value <= valBerangkat) {
-                inputKepulangan.value = minPulangVal;
+            const yyyy = date.getFullYear();
+            const mm = String(date.getMonth() + 1).padStart(2, '0');
+            const dd = String(date.getDate()).padStart(2, '0');
+            return `${yyyy}-${mm}-${dd}`;
+        }
+
+        // Ketika tanggal keberangkatan diubah oleh pengguna
+        inputBerangkat.addEventListener("change", function() {
+            const valBerangkat = this.value;
+            if (valBerangkat) {
+                // Hitung tanggal minimal kepulangan (H+9 hari)
+                const minPulangVal = addDays(valBerangkat, 9);
+                inputKepulangan.min = minPulangVal;
+
+                // Jika tanggal kepulangan terisi namun kurang dari H+9, sesuaikan otomatis ke H+9
+                if (!inputKepulangan.value || inputKepulangan.value < minPulangVal) {
+                    inputKepulangan.value = minPulangVal;
+                }
             }
-        }
+        });
+
+        // Validasi saat Form Disubmit
+        form.addEventListener("submit", function(e) {
+            const valBerangkat = inputBerangkat.value;
+            const valPulang = inputKepulangan.value;
+            const todayStr = "<?= $today; ?>";
+
+            // Hanya cegah jika user sengaja MENGUBAH tanggal ke tanggal sebelum hari ini,
+            // namun izinkan jika tanggal tersebut memang data awal/lama yang dari DB.
+            if (valBerangkat < todayStr && valBerangkat !== originalBerangkatVal) {
+                alert("Tanggal keberangkatan baru tidak boleh sebelum hari ini!");
+                e.preventDefault();
+                return false;
+            }
+
+            // Validasi tanggal kepulangan minimal berjarak 9 hari dari keberangkatan
+            if (valPulang) {
+                const minPulangHarus = addDays(valBerangkat, 9);
+                if (valPulang < minPulangHarus) {
+                    alert("Tanggal kepulangan minimal harus berjarak 9 hari dari tanggal keberangkatan!");
+                    e.preventDefault();
+                    return false;
+                }
+            }
+        });
     });
-
-    // Validasi saat Form Disubmit
-    form.addEventListener("submit", function (e) {
-        const tglBerangkat = new Date(inputBerangkat.value);
-        const tglPulang = inputKepulangan.value ? new Date(inputKepulangan.value) : null;
-        const todayStr = "<?= $today; ?>";
-        const today = new Date(todayStr);
-
-        // Validasi tidak boleh tanggal sebelum hari ini
-        if (tglBerangkat < today) {
-            alert("Tanggal keberangkatan tidak boleh kurang dari hari ini!");
-            e.preventDefault();
-            return false;
-        }
-
-        // Validasi tanggal kepulangan harus setelah tanggal keberangkatan (tidak boleh sama / lebih awal)
-        if (tglPulang && tglPulang <= tglBerangkat) {
-            alert("Tanggal kepulangan harus setelah tanggal keberangkatan (minimal H+1)!");
-            e.preventDefault();
-            return false;
-        }
-    });
-});
 </script>
 
+<?php
+include "components/footer.php";
+include "components/bottom.php";
 ?>

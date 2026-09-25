@@ -10,13 +10,13 @@ $auth->checkRole(['admin', 'petugas']);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id         = intval($_POST['id'] ?? 0);
-    $nama_paket = trim($_POST['nama_paket'] ?? '');
+    $nama_paket = htmlspecialchars(trim($_POST['nama_paket'] ?? ''));
     // Membaca jenis_paket atau fallback ke jenis
-    $jenis      = trim($_POST['jenis_paket'] ?? $_POST['jenis'] ?? '');
+    $jenis      = htmlspecialchars(trim($_POST['jenis_paket'] ?? $_POST['jenis'] ?? ''));
     $harga      = intval($_POST['harga'] ?? 0);
     $durasi     = intval($_POST['durasi'] ?? 0); // <--- TANGKAP DURASI
     $kuota      = intval($_POST['kuota'] ?? 0);
-    $deskripsi  = trim($_POST['deskripsi'] ?? '');
+    $deskripsi  = htmlspecialchars(trim($_POST['deskripsi'] ?? ''));
 
     // 1. Validasi Input Utama
     if ($id <= 0 || empty($nama_paket) || empty($jenis)) {

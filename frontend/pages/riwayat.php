@@ -9,7 +9,7 @@
 */
 
 if (session_status() === PHP_SESSION_NONE) {
-    session_start();
+  session_start();
 }
 
 require_once __DIR__ . '/../database/connection.php';
@@ -18,8 +18,8 @@ $isLoggedIn = isset($_SESSION['login']) && $_SESSION['login'] === true;
 $userRole   = $_SESSION['role'] ?? '';
 
 if (!$isLoggedIn) {
-    header("Location: login.php?redirect=" . urlencode('riwayat.php'));
-    exit;
+  header("Location: login.php?redirect=" . urlencode('riwayat.php'));
+  exit;
 }
 
 $db = (new Database())->getConnection();
@@ -31,12 +31,12 @@ $jadwalList = [];
 $successMessage = "";
 
 if (isset($_GET['status']) && $_GET['status'] === 'success') {
-    $successMessage = "Pendaftaran berhasil diajukan! Silakan tunggu verifikasi admin.";
+  $successMessage = "Pendaftaran berhasil diajukan! Silakan tunggu verifikasi admin.";
 }
 
 if ($userRole === 'jamaah') {
-    try {
-        $query = "SELECT p.id AS pendaftaran_id, p.status, p.tgl_daftar,
+  try {
+    $query = "SELECT p.id AS pendaftaran_id, p.status, p.tgl_daftar,
                          k.*,
                          pk.nama_paket, pk.jenis AS jenis_layanan, pk.durasi,
                          COALESCE(pk.harga, 0) AS harga_paket
@@ -44,32 +44,33 @@ if ($userRole === 'jamaah') {
                   INNER JOIN paket pk ON p.paket_id = pk.id
                   LEFT JOIN keberangkatan k ON p.keberangkatan_id = k.id";
 
-        $params = [];
-        if (!empty($jamaahId)) {
-            $query .= " WHERE p.jamaah_id = :jamaah_id";
-            $params[':jamaah_id'] = $jamaahId;
-        } else if (!empty($userId)) {
-            $query .= " LEFT JOIN jamaah j ON p.jamaah_id = j.id WHERE j.user_id = :user_id";
-            $params[':user_id'] = $userId;
-        }
-        $query .= " ORDER BY p.id DESC";
-
-        $stmt = $db->prepare($query);
-        $stmt->execute($params);
-        $jadwalList = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    } catch (PDOException $e) {
-        $jadwalList = [];
+    $params = [];
+    if (!empty($jamaahId)) {
+      $query .= " WHERE p.jamaah_id = :jamaah_id";
+      $params[':jamaah_id'] = $jamaahId;
+    } else if (!empty($userId)) {
+      $query .= " LEFT JOIN jamaah j ON p.jamaah_id = j.id WHERE j.user_id = :user_id";
+      $params[':user_id'] = $userId;
     }
+    $query .= " ORDER BY p.id DESC";
+
+    $stmt = $db->prepare($query);
+    $stmt->execute($params);
+    $jadwalList = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  } catch (PDOException $e) {
+    $jadwalList = [];
+  }
 }
 ?>
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Paket Anda - Arsha</title>
+  <title>Paket Anda - Rinn</title>
 
-  <link href="../template/assets/img/favicon.png" rel="icon">
+  <link href="../template/assets/img/traveloka.png" rel="icon">
 
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
@@ -83,13 +84,35 @@ if ($userRole === 'jamaah') {
   <link href="../template/assets/css/main.css" rel="stylesheet">
 
   <style>
-    #header { background: linear-gradient(135deg, #064e3b 0%, #022c22 100%) !important; }
-    #header .sitename { color: #ffffff !important; }
-    #header .navmenu ul li a { color: #e5e7eb !important; }
-    #header .navmenu ul li a:hover { color: #d4af37 !important; }
-    #footer { background: linear-gradient(135deg, #022c22 0%, #064e3b 100%) !important; color: #e5e7eb !important; }
-    #footer .sitename { color: #ffffff !important; }
-    #footer .copyright { background: #022c22 !important; color: #e5e7eb !important; }
+    #header {
+      background: linear-gradient(135deg, #064e3b 0%, #022c22 100%) !important;
+    }
+
+    #header .sitename {
+      color: #ffffff !important;
+    }
+
+    #header .navmenu ul li a {
+      color: #e5e7eb !important;
+    }
+
+    #header .navmenu ul li a:hover {
+      color: #d4af37 !important;
+    }
+
+    #footer {
+      background: linear-gradient(135deg, #022c22 0%, #064e3b 100%) !important;
+      color: #e5e7eb !important;
+    }
+
+    #footer .sitename {
+      color: #ffffff !important;
+    }
+
+    #footer .copyright {
+      background: #022c22 !important;
+      color: #e5e7eb !important;
+    }
 
     .jadwal-card {
       background: #fff;
@@ -101,35 +124,92 @@ if ($userRole === 'jamaah') {
       box-shadow: 0 10px 30px rgba(6, 78, 59, 0.06);
       border-left: 5px solid #d97706;
     }
-    .jadwal-card.status-mendatang { border-left-color: #0284c7; }
-    .jadwal-card.status-berlangsung { border-left-color: #047857; }
-    .jadwal-card.status-selesai { border-left-color: #94a3b8; }
+
+    .jadwal-card.status-mendatang {
+      border-left-color: #0284c7;
+    }
+
+    .jadwal-card.status-berlangsung {
+      border-left-color: #047857;
+    }
+
+    .jadwal-card.status-selesai {
+      border-left-color: #94a3b8;
+    }
 
     .jadwal-kaaba-icon {
-      width: 54px; height: 54px; border-radius: 16px;
+      width: 54px;
+      height: 54px;
+      border-radius: 16px;
       background: linear-gradient(135deg, #064e3b 0%, #047857 100%);
-      display: flex; align-items: center; justify-content: center;
-      color: #fff; font-size: 1.3rem; flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 1.3rem;
+      flex-shrink: 0;
     }
+
     .jenis-pill {
-      display:inline-block; font-size: 0.72rem; font-weight: 700;
-      padding: 3px 12px; border-radius: 999px; background:#fef3c7; color:#b45309;
-      text-transform: uppercase; letter-spacing: .04em;
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 3px 12px;
+      border-radius: 999px;
+      background: #fef3c7;
+      color: #b45309;
+      text-transform: uppercase;
+      letter-spacing: .04em;
     }
+
     .flight-route {
-      display:flex; align-items:center; gap:10px; margin-top:14px;
-      font-size: 0.92rem; color:#334155;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 14px;
+      font-size: 0.92rem;
+      color: #334155;
     }
-    .flight-route .dot { width:8px; height:8px; border-radius:50%; background:#d97706; }
-    .flight-route .line { flex:1; height:2px; background:repeating-linear-gradient(90deg,#cbd5e1 0 6px,transparent 6px 12px); position:relative; }
-    .flight-route .line i { position:absolute; top:-9px; left:50%; transform:translateX(-50%); color:#d97706; background:#fff; padding:0 4px; }
-    .status-pill { font-size:0.75rem; font-weight:700; padding:6px 16px; border-radius:999px; }
+
+    .flight-route .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #d97706;
+    }
+
+    .flight-route .line {
+      flex: 1;
+      height: 2px;
+      background: repeating-linear-gradient(90deg, #cbd5e1 0 6px, transparent 6px 12px);
+      position: relative;
+    }
+
+    .flight-route .line i {
+      position: absolute;
+      top: -9px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #d97706;
+      background: #fff;
+      padding: 0 4px;
+    }
+
+    .status-pill {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 6px 16px;
+      border-radius: 999px;
+    }
   </style>
 </head>
 
 <body class="index-page">
 
-<?php $baseRoot = '../../'; $basePages = ''; $activePage = 'paket-anda'; include '../components/header.php' ?>
+  <?php $baseRoot = '../../';
+  $basePages = '';
+  $activePage = 'paket-anda';
+  include '../components/header.php' ?>
 
   <main class="main">
     <section class="section" style="padding-top: 140px; padding-bottom: 100px; background:#f8fafc; min-height: 80vh;">
@@ -166,31 +246,31 @@ if ($userRole === 'jamaah') {
         <?php } else { ?>
 
           <?php foreach ($jadwalList as $row) {
-              $tglBerangkat = $row['tanggal_berangkat'] ?? null;
-              $tglPulang    = $row['tgl_kepulangan'] ?? null;
-              $today        = date('Y-m-d');
+            $tglBerangkat = $row['tanggal_berangkat'] ?? null;
+            $tglPulang    = $row['tgl_kepulangan'] ?? null;
+            $today        = date('Y-m-d');
 
-              if ($tglBerangkat && $tglBerangkat > $today) {
-                  $statusClass = 'status-mendatang';
-                  $statusStyle = 'background:#e0f2fe; color:#0284c7;';
-                  $statusIcon  = 'fa-plane-departure';
-                  $statusText  = 'Mendatang';
-              } else if ($tglBerangkat && $tglBerangkat <= $today && (!$tglPulang || $tglPulang >= $today)) {
-                  $statusClass = 'status-berlangsung';
-                  $statusStyle = 'background:#d1fae5; color:#047857;';
-                  $statusIcon  = 'fa-sync-alt';
-                  $statusText  = 'Berlangsung';
-              } else if ($tglBerangkat) {
-                  $statusClass = 'status-selesai';
-                  $statusStyle = 'background:#f1f5f9; color:#64748b;';
-                  $statusIcon  = 'fa-check-circle';
-                  $statusText  = 'Selesai';
-              } else {
-                  $statusClass = '';
-                  $statusStyle = 'background:#fff7ed; color:#ea580c;';
-                  $statusIcon  = 'fa-clock';
-                  $statusText  = 'Menunggu Jadwal';
-              }
+            if ($tglBerangkat && $tglBerangkat > $today) {
+              $statusClass = 'status-mendatang';
+              $statusStyle = 'background:#e0f2fe; color:#0284c7;';
+              $statusIcon  = 'fa-plane-departure';
+              $statusText  = 'Mendatang';
+            } else if ($tglBerangkat && $tglBerangkat <= $today && (!$tglPulang || $tglPulang >= $today)) {
+              $statusClass = 'status-berlangsung';
+              $statusStyle = 'background:#d1fae5; color:#047857;';
+              $statusIcon  = 'fa-sync-alt';
+              $statusText  = 'Berlangsung';
+            } else if ($tglBerangkat) {
+              $statusClass = 'status-selesai';
+              $statusStyle = 'background:#f1f5f9; color:#64748b;';
+              $statusIcon  = 'fa-check-circle';
+              $statusText  = 'Selesai';
+            } else {
+              $statusClass = '';
+              $statusStyle = 'background:#fff7ed; color:#ea580c;';
+              $statusIcon  = 'fa-clock';
+              $statusText  = 'Menunggu Jadwal';
+            }
           ?>
 
             <div class="jadwal-card <?php echo $statusClass; ?>">
@@ -310,4 +390,5 @@ if ($userRole === 'jamaah') {
   <script src="../template/assets/js/main.js"></script>
 
 </body>
+
 </html>

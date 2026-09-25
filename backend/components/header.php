@@ -1,13 +1,15 @@
-
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kemenhaj Panel - Sistem Informasi Haji & Umroh</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
+    <link href="../frontend/template/assets/img/traveloka.png" rel="icon">
+
     <style>
         :root {
             --bg-sidebar: #f4efe6;
@@ -16,8 +18,9 @@
             --text-dark: #2c2825;
             --text-muted: #78716c;
         }
-        
-        html, body {
+
+        html,
+        body {
             height: 100%;
             margin: 0;
             padding: 0;
@@ -101,14 +104,27 @@
                 height: 100vh;
                 transition: all 0.3s ease-in-out;
             }
-            .sidebar.show { left: 0; }
-            .sidebar-overlay.show { display: block; }
-            .main-wrapper { width: 100% !important; }
-            .content-body { padding: 15px; }
+
+            .sidebar.show {
+                left: 0;
+            }
+
+            .sidebar-overlay.show {
+                display: block;
+            }
+
+            .main-wrapper {
+                width: 100% !important;
+            }
+
+            .content-body {
+                padding: 15px;
+            }
         }
     </style>
 </head>
+
 <body>
-<div class="sidebar-overlay" id="sidebarOverlay"></div>
-<div class="app-container">
-    <div class="main-content-wrapper">
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <div class="app-container">
+        <div class="main-content-wrapper">

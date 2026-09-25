@@ -28,5 +28,4 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
     // DIPERBARUI: Diarahkan ke tabel_user.php
     header("Location: tabel_user.php");
     exit();
-
 }

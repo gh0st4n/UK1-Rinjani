@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id       = intval($_POST['id'] ?? 0);
     $username = trim($_POST['username'] ?? '');
     $password = $_POST['password'] ?? '';
-    $role     = trim($_POST['role'] ?? '');
+    $role     = htmlspecialchars(trim($_POST['role'] ?? ''));
 
     // Validasi Data Wajib
     if ($id <= 0 || empty($username) || empty($role)) {

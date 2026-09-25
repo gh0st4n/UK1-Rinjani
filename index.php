@@ -1,8 +1,7 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
-  <?php include 'frontend/partials/head.php' ?>
+<?php include 'frontend/partials/head.php' ?>
 
 <body class="index-page">
 
@@ -11,11 +10,11 @@
   <main class="main">
 
     <!-- Hero Section -->
-   <?php include 'frontend/pages/hero.php' ?>
+    <?php include 'frontend/pages/hero.php' ?>
     <!-- /Hero Section -->
 
     <!-- About Section -->
-   <?php include 'frontend/pages/about.php' ?>
+    <?php include 'frontend/pages/about.php' ?>
     <!-- /About Section -->
 
     <!-- Service -->
@@ -30,7 +29,7 @@
   <?php include 'frontend/partials/scroll-top.php' ?>
 
   <!-- Preloader -->
-  <div id="preloader"></div> 
+  <div id="preloader"></div>
 
   <?php include 'frontend/partials/script.php' ?>
 

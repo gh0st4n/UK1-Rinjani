@@ -10,7 +10,7 @@ $auth->checkRole(['admin']);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = trim($_POST['username'] ?? '');
-    $password = $_POST['password'] ?? '';
+    $password = htmlspecialchars(trim($_POST['password'] ?? ''));
     $role     = 'petugas';
 
     // 1. Validasi Input Tidak Boleh Kosong

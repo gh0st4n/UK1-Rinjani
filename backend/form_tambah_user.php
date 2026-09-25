@@ -1,4 +1,3 @@
-
 <?php
 require_once "database/connection.php";
 require_once "classes/Auth.php";
@@ -63,8 +62,8 @@ include "components/sidebar.php";
     </div>
 </div>
 
-<?php 
+<?php
 include "components/footer.php";
-include "components/bottom.php"; 
+include "components/bottom.php";
 
 ?>

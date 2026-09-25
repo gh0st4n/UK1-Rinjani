@@ -1,4 +1,3 @@
-
 <?php
 include "database/connection.php";
 require_once "classes/Auth.php";
@@ -113,9 +112,9 @@ include "components/sidebar.php";
                 </div>
             </div>
             
-            <button onclick="window.print()" class="btn btn-gold px-4 py-2.5 shadow-sm d-flex align-items-center gap-2">
+            <a href="cetak_laporan.php" target="_blank" class="btn btn-gold px-4 py-2.5 shadow-sm d-flex align-items-center gap-2">
                 <i class="fas fa-print"></i> Cetak Laporan
-            </button>
+            </a>
         </div>
 
 

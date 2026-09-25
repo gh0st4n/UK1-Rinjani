@@ -1,4 +1,4 @@
-
+<!-- hero.php -->
 <section id="hero" class="hero section dark-background" style="background: linear-gradient(135deg, #064e3b 0%, #022c22 100%);">
 
   <div class="container">

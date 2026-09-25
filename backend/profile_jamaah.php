@@ -40,9 +40,9 @@ try {
 
 // 2. Proses Edit Profil (No HP, Alamat, Jenis Kelamin)
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_profile'])) {
-    $noHp         = trim($_POST['no_hp'] ?? '');
-    $alamat       = trim($_POST['alamat'] ?? '');
-    $jenisKelamin = $_POST['jenis_kelamin'] ?? 'L';
+    $noHp         = htmlspecialchars(trim($_POST['no_hp'] ?? ''));
+    $alamat       = htmlspecialchars(trim($_POST['alamat'] ?? ''));
+    $jenisKelamin = htmlspecialchars(trim($_POST['jenis_kelamin'] ?? 'L'));
 
     try {
         if (!empty($jamaahData['id'])) {
@@ -67,9 +67,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_profile'])) {
 
 // 3. Proses Ganti Password
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_password'])) {
-    $passLama = $_POST['password_lama'] ?? '';
-    $passBaru = $_POST['password_baru'] ?? '';
-    $konfirm  = $_POST['konfirmasi_password'] ?? '';
+    $passLama = htmlspecialchars(trim($_POST['password_lama'] ?? ''));
+    $passBaru = htmlspecialchars(trim($_POST['password_baru'] ?? ''));
+    $konfirm  = htmlspecialchars(trim($_POST['konfirmasi_password'] ?? ''));
 
     if (empty($passLama) || empty($passBaru) || empty($konfirm)) {
         $errorMessage = "Semua kolom password wajib diisi!";

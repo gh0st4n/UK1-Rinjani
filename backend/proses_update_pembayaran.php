@@ -13,8 +13,8 @@ $auth->checkRole(['admin', 'petugas', 'jamaah']);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $pembayaranId = $_POST['pembayaran_id'] ?? null;
     $pendaftaranId = $_POST['pendaftaran_id'] ?? null;
-    $sisaPembayaran = $_POST['sisa_pembayaran'] ?? 0;
-    $statusInput = $_POST['status'] ?? 'Pending';
+    $sisaPembayaran = htmlspecialchars(trim($_POST['sisa_pembayaran'] ?? 0));
+    $statusInput = htmlspecialchars(trim($_POST['status'] ?? 'Pending'));
 
     // Pemetaan status dari form ke Enum Database (Huruf Kapital di Awal)
     $statusPembayaran = 'Pending';

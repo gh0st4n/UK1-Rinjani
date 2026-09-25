@@ -10,9 +10,9 @@ $auth->checkRole(['admin', 'petugas']);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $pendaftaran_id = intval($_POST['pendaftaran_id'] ?? 0);
     $nominal        = floatval($_POST['nominal'] ?? 0);
-    $tanggal_bayar  = trim($_POST['tanggal_bayar'] ?? '');
-    $sisa_pembayaran = trim ($_POST)['sisa_pembayaran'];
-    $status         = trim($_POST['status'] ?? 'Valid');
+    $tanggal_bayar  = htmlspecialchars(trim($_POST['tanggal_bayar'] ?? ''));
+    $sisa_pembayaran = htmlspecialchars(trim($_POST['sisa_pembayaran']));
+    $status         = htmlspecialchars(trim($_POST['status'] ?? 'Valid'));
 
     // 1. Validasi Input Utama
     if ($pendaftaran_id <= 0 || empty($tanggal_bayar)) {

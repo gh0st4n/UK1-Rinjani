@@ -1,4 +1,3 @@
-
 <?php
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -27,7 +26,7 @@ $avatarIcon = ($role === 'jamaah') ? 'fa-user' : 'fa-user-tie';
         </button>
 
         <div class="fw-bold d-flex align-items-center" style="color: #1a1a1a;">
-            <i class="fas <?= $panelIcon; ?> me-2" style="color: #b38e46;"></i> 
+            <i class="fas <?= $panelIcon; ?> me-2" style="color: #b38e46;"></i>
             <span class="d-none d-sm-inline"><?= $panelTitle; ?></span>
             <span class="d-inline d-sm-none">Kemenhaj</span>
         </div>

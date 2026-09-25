@@ -2,12 +2,12 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Index - Arsha Bootstrap Template</title>
+  <title>Travel Rinn</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
   <!-- Favicons -->
-  <link href="frontend/template/assets/img/favicon.png" rel="icon">
+  <link href="frontend/template/assets/img/traveloka.png" rel="icon">
   <link href="frontend/template/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Fonts -->
