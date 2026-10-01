@@ -414,6 +414,30 @@ Gagal menyimpan data transaksi: SQLSTATE[42S22]: Column not found:
 Aplikasi memiliki parameter yang tidak divalidasi dengan baik saat mengakses file, memungkinkan penyerang untuk keluar dari direktori yang dituju dan membaca file sensitif di sistem operasi. Kerentanan ini ditemukan pada parameter `file` di `index.php` dan `page` di `frontend/pages/`.
 
 **URL:** `http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/process/`
+```
+Index of /UK-PKL_Banjar/UK1/UK1-Rinjani/backend/process
+
+    Parent Directory
+    proses_delete_jadwal.php
+    proses_hapus_user.php
+```
+
+**URL:** `http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/uploads/bukti_transfer/`
+```
+Index of /UK-PKL_Banjar/UK1/UK1-Rinjani/backend/uploads/bukti_transfer
+
+    Parent Directory
+    tf_1790842144_669.jpg
+    tf_1790842175_692.jpg
+```
+
+**URL:** `http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/database/`
+```
+Index of /UK-PKL_Banjar/UK1/UK1-Rinjani/backend/database
+
+    Parent Directory
+    connection.php
+```
 
 ## 5. Vektor yang Diuji & Aman
 
