@@ -1,0 +1,61 @@
+┌──(gh0st4n㉿Gh0sT4n)-[~/Hack/UK1/UK1-Rinjani/hasil-git]
+└─$ git log --all
+commit 109abf390d32c5acb553b08f79b3ef570b3c299f (HEAD -> main, origin/main)
+Author: lisnarinjani9-collab <lisnarinjani9@gmail.com>
+Date:   Mon Sep 28 11:11:29 2026 +0700
+
+    Push Gabut
+
+commit 37417a377b5f82d5440563fb437f13860d44e2e8
+Author: lisnarinjani9-collab <lisnarinjani9@gmail.com>
+Date:   Mon Sep 28 11:05:52 2026 +0700
+
+    anggap aja selesai
+
+commit ab5a99595d3f3038eb731f4da96e6f500721bbd0
+Author: lisnarinjani9-collab <lisnarinjani9@gmail.com>
+Date:   Fri Sep 25 18:04:14 2026 +0700
+
+    anggap aja selesai
+
+commit a4e2b4d23c5703ef67511859165f0eceb9176c94 (origin/pentest, origin/HEAD)
+Merge: badcded 71d9b30
+Author: rinjaniw <lisnarinjani9@gmail.com>
+Date:   Thu Sep 24 11:49:54 2026 +0700
+
+    Merge pull request #2 from gh0st4n/main
+    
+    24-09-2026
+
+commit 71d9b30274809a1e9a26ec48cbc7a7d408788c76
+Author: gh0st4n <darskevoid@gmail.com>
+Date:   Thu Sep 24 11:47:35 2026 +0700
+
+    24-09-2026
+
+commit badcded54c7e08f5186ff2067a77f0e85d1a90a7
+Merge: 5fbe4ae 30dc086
+Author: rinjaniw <lisnarinjani9@gmail.com>
+Date:   Mon Sep 21 11:32:23 2026 +0700
+
+    Merge pull request #1 from gh0st4n/main
+    
+    Nih Tugas nya
+
+commit 30dc0863dd8f58c0390082f24737b2427ed03a26
+Author: gh0st4n <darskevoid@gmail.com>
+Date:   Mon Sep 21 11:31:02 2026 +0700
+
+    Nih Tugas nya
+
+commit 5fbe4ae18365de36962748df41adef0dc01a6cf9
+Author: lisnarinjani9-collab <lisnarinjani9@gmail.com>
+Date:   Fri Sep 18 08:51:41 2026 +0700
+
+    progres
+
+commit 054dfeec186c6b405c475181e06ec94c24bfff4e
+Author: lisnarinjani9-collab <lisnarinjani9@gmail.com>
+Date:   Wed Sep 16 15:14:49 2026 +0700
+
+    first commit

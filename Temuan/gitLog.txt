@@ -1,0 +1,350 @@
+┌──(gh0st4n㉿Gh0sT4n)-[~/Hack/UK1/UK1-Rinjani]
+└─$ cd hasil-git 
+                                                                                                                                                                                                                          
+┌──(gh0st4n㉿Gh0sT4n)-[~/Hack/UK1/UK1-Rinjani/hasil-git]
+└─$ ls
+backend  frontend  index.php  NOTE.md  TRAVEL-UMROH2
+                                                                                                                                                                                                                          
+┌──(gh0st4n㉿Gh0sT4n)-[~/Hack/UK1/UK1-Rinjani/hasil-git]
+└─$ git log -p --all | grep -iE "password|secret"
+-  `password` varchar(255) NOT NULL,
+-INSERT INTO `user` (`id`, `username`, `password`, `role`, `jamaah_id`) VALUES
+     private $password = "";
+-    $password = trim($_POST['password']);
++    $password = htmlspecialchars(trim($_POST['password']));
+     if ($auth->login($username, $password)) {
+ // 3. Proses Ganti Password
+ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_password'])) {
+-    $passLama = $_POST['password_lama'] ?? '';
+-    $passBaru = $_POST['password_baru'] ?? '';
+-    $konfirm  = $_POST['konfirmasi_password'] ?? '';
++    $passLama = htmlspecialchars(trim($_POST['password_lama'] ?? ''));
++    $passBaru = htmlspecialchars(trim($_POST['password_baru'] ?? ''));
++    $konfirm  = htmlspecialchars(trim($_POST['konfirmasi_password'] ?? ''));
+         $errorMessage = "Semua kolom password wajib diisi!";
+-    $password = $_POST['password'] ?? '';
++    $password = htmlspecialchars(trim($_POST['password'] ?? ''));
+     $password = $_POST['password'] ?? '';
+-    $password      = trim($_POST['password']);
++    $password      = htmlspecialchars(trim($_POST['password']));
+     if (empty($nik) || empty($nama_lengkap) || empty($jenis_kelamin) || empty($username) || empty($password)) {
+         $error = "NIK, Nama Lengkap, Jenis Kelamin, Username, dan Password wajib diisi!";
+-    private $password = "";
++    private string $password = "";
+-                $this->password,
++            $this->conn = new PDO($dsn, $this->username, $this->password, $options);
++  `password` varchar(255) NOT NULL,
++INSERT INTO `user` (`id`, `username`, `password`, `role`, `jamaah_id`) VALUES
+-    public function login($username, $password) {
++    public function login($username, $password)
+             // Cek password hash atau fallback plain-text (untuk data dummy awal)
+             if (password_verify($password, $user['password']) || $password === $user['password']) {
+-                        <label for="password" class="form-label small fw-semibold" style="color: #44403c;">Password</label>
+-                        <input type="password" class="form-control form-control-lg fs-6" id="password" name="password" placeholder="Masukkan password" required>
++                        <label for="password" class="form-label small fw-semibold" style="color: #44403c;">Password</label>
++                        <input type="password" class="form-control form-control-lg fs-6" id="password" name="password" placeholder="Masukkan password" required>
+-                    <?= $currentUserRole === 'petugas' ? 'Ubah Password Petugas' : 'Edit Data User'; ?>
+-                    <?= $currentUserRole === 'petugas' ? 'Silakan masukkan password baru untuk akun ini.' : 'Perbarui informasi dan hak akses pengguna sistem.'; ?>
+-                    <!-- Password Baru -->
+-                        <label for="password" class="form-label small fw-semibold" style="color: #44403c;">Password Baru <span class="text-muted fw-normal">(Kosongkan jika tidak ingin diubah)</span></label>
+-                        <input type="password" class="form-control form-control-lg fs-6" id="password" name="password" placeholder="Masukkan password baru...">
++                    <?= $currentUserRole === 'petugas' ? 'Ubah Password Petugas' : 'Edit Data User'; ?>
++                    <?= $currentUserRole === 'petugas' ? 'Silakan masukkan password baru untuk akun ini.' : 'Perbarui informasi dan hak akses pengguna sistem.'; ?>
++                    <!-- Password Baru -->
++                        <label for="password" class="form-label small fw-semibold" style="color: #44403c;">Password Baru <span class="text-muted fw-normal">(Kosongkan jika tidak ingin diubah)</span></label>
++                        <input type="password" class="form-control form-control-lg fs-6" id="password" name="password" placeholder="Masukkan password baru...">
+-    $password = trim($_POST['password']);
+-    if ($auth->login($username, $password)) {
+-        $error = "Username atau password salah!";
+-            <label class="form-label small fw-bold">Password</label>
+-            <input type="password" name="password" class="form-control" placeholder="Masukkan password" required>
++    $password = trim($_POST['password']);
++    if ($auth->login($username, $password)) {
++        $error = "Username atau password salah!";
++            <label class="form-label small fw-bold">Password</label>
++            <input type="password" name="password" class="form-control" placeholder="Masukkan password" required>
+-// 3. Proses Ganti Password
+-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_password'])) {
+-    $passLama = $_POST['password_lama'] ?? '';
+-    $passBaru = $_POST['password_baru'] ?? '';
+-    $konfirm  = $_POST['konfirmasi_password'] ?? '';
+-        $errorMessage = "Semua kolom password wajib diisi!";
+-        $errorMessage = "Konfirmasi password baru tidak cocok!";
+-            $stmtUser = $db->prepare("SELECT password FROM user WHERE id = :id");
+-            if ($userRow && password_verify($passLama, $userRow['password'])) {
+-                $newHash = password_hash($passBaru, PASSWORD_BCRYPT);
+-                $stmtPass = $db->prepare("UPDATE user SET password = :pass WHERE id = :id");
+-                $successMessage = "Password berhasil diperbarui!";
+-                $errorMessage = "Password lama Anda salah!";
+-            $errorMessage = "Gagal mengubah password: " . $e->getMessage();
+-                                <button class="nav-link" id="password-tab" data-bs-toggle="tab" data-bs-target="#password-panel" type="button" role="tab">
+-                                    <i class="fas fa-key me-2"></i>Ganti Password
+-                            <!-- TAB 2: GANTI PASSWORD -->
+-                            <div class="tab-pane fade" id="password-panel" role="tabpanel">
+-                                            <label class="form-label fw-semibold text-secondary small">Password Lama <span class="text-danger">*</span></label>
+-                                            <input type="password" name="password_lama" class="form-control py-2 rounded-3" placeholder="Masukkan password saat ini" required>
+-                                            <label class="form-label fw-semibold text-secondary small">Password Baru <span class="text-danger">*</span></label>
+-                                            <input type="password" name="password_baru" class="form-control py-2 rounded-3" placeholder="Masukkan password baru" required>
+-                                            <label class="form-label fw-semibold text-secondary small">Konfirmasi Password Baru <span class="text-danger">*</span></label>
+-                                            <input type="password" name="konfirmasi_password" class="form-control py-2 rounded-3" placeholder="Ulangi password baru" required>
+-                                        <button type="submit" name="update_password" class="btn btn-dark px-4 py-2 rounded-3 shadow-sm">
+-                                            <i class="fas fa-lock me-1"></i> Perbarui Password
++// 3. Proses Ganti Password
++if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_password'])) {
++    $passLama = $_POST['password_lama'] ?? '';
++    $passBaru = $_POST['password_baru'] ?? '';
++    $konfirm  = $_POST['konfirmasi_password'] ?? '';
++        $errorMessage = "Semua kolom password wajib diisi!";
++        $errorMessage = "Konfirmasi password baru tidak cocok!";
++            $stmtUser = $db->prepare("SELECT password FROM user WHERE id = :id");
++            if ($userRow && password_verify($passLama, $userRow['password'])) {
++                $newHash = password_hash($passBaru, PASSWORD_BCRYPT);
++                $stmtPass = $db->prepare("UPDATE user SET password = :pass WHERE id = :id");
++                $successMessage = "Password berhasil diperbarui!";
++                $errorMessage = "Password lama Anda salah!";
++            $errorMessage = "Gagal mengubah password: " . $e->getMessage();
++                                <button class="nav-link" id="password-tab" data-bs-toggle="tab" data-bs-target="#password-panel" type="button" role="tab">
++                                    <i class="fas fa-key me-2"></i>Ganti Password
++                            <!-- TAB 2: GANTI PASSWORD -->
++                            <div class="tab-pane fade" id="password-panel" role="tabpanel">
++                                            <label class="form-label fw-semibold text-secondary small">Password Lama <span class="text-danger">*</span></label>
++                                            <input type="password" name="password_lama" class="form-control py-2 rounded-3" placeholder="Masukkan password saat ini" required>
++                                            <label class="form-label fw-semibold text-secondary small">Password Baru <span class="text-danger">*</span></label>
++                                            <input type="password" name="password_baru" class="form-control py-2 rounded-3" placeholder="Masukkan password baru" required>
++                                            <label class="form-label fw-semibold text-secondary small">Konfirmasi Password Baru <span class="text-danger">*</span></label>
++                                            <input type="password" name="konfirmasi_password" class="form-control py-2 rounded-3" placeholder="Ulangi password baru" required>
++                                        <button type="submit" name="update_password" class="btn btn-dark px-4 py-2 rounded-3 shadow-sm">
++                                            <i class="fas fa-lock me-1"></i> Perbarui Password
+-                <h3 class="fw-bold mb-0" style="color: #2c2825;">Ubah Password Petugas</h3>
+-                <p class="mb-0 small" style="color: #78716c;">Silakan perbarui password akun Anda di bawah ini.</p>
+-                    <!-- Password Baru -->
+-                        <label for="password" class="form-label small fw-semibold" style="color: #44403c;">Password Baru <span class="text-muted fw-normal">(Kosongkan jika tidak ingin diubah)</span></label>
+-                        <input type="password" class="form-control form-control-lg fs-6" id="password" name="password" placeholder="Masukkan password baru...">
++                <h3 class="fw-bold mb-0" style="color: #2c2825;">Ubah Password Petugas</h3>
++                <p class="mb-0 small" style="color: #78716c;">Silakan perbarui password akun Anda di bawah ini.</p>
++                    <!-- Password Baru -->
++                        <label for="password" class="form-label small fw-semibold" style="color: #44403c;">Password Baru <span class="text-muted fw-normal">(Kosongkan jika tidak ingin diubah)</span></label>
++                        <input type="password" class="form-control form-control-lg fs-6" id="password" name="password" placeholder="Masukkan password baru...">
+-    $password = $_POST['password'] ?? '';
+-   if (empty($username) || empty($password)) {
+-    $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+-    $stmt = $db->prepare("INSERT INTO user (username, password, role) VALUES (:username, :password, :role)");
+-    $stmt->bindParam(':password', $hashedPassword);
++    $password = $_POST['password'] ?? '';
++   if (empty($username) || empty($password)) {
++    $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
++    $stmt = $db->prepare("INSERT INTO user (username, password, role) VALUES (:username, :password, :role)");
++    $stmt->bindParam(':password', $hashedPassword);
+-    $password = $_POST['password'] ?? '';
+-    // Cek apakah password diisi atau dikosongkan
+-    if (!empty($password)) {
+-        // Jika password diisi, update username, password, dan role
+-        $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+-        $query = "UPDATE user SET username = :username, password = :password, role = :role WHERE id = :id";
+-        $stmt->bindParam(':password', $hashedPassword);
+-        // Jika password kosong, update username dan role saja
++    $password = $_POST['password'] ?? '';
++    // Cek apakah password diisi atau dikosongkan
++    if (!empty($password)) {
++        // Jika password diisi, update username, password, dan role
++        $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
++        $query = "UPDATE user SET username = :username, password = :password, role = :role WHERE id = :id";
++        $stmt->bindParam(':password', $hashedPassword);
++        // Jika password kosong, update username dan role saja
+-    $password      = trim($_POST['password']);
+-    if (empty($nik) || empty($nama_lengkap) || empty($jenis_kelamin) || empty($username) || empty($password)) {
+-        $error = "NIK, Nama Lengkap, Jenis Kelamin, Username, dan Password wajib diisi!";
+-                $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+-                $stmtUser = $db->prepare("INSERT INTO user (username, password, role) VALUES (?, ?, 'jamaah')");
+-                $stmtUser->execute([$username, $hashedPassword]);
+-            <label class="form-label small fw-bold">Password</label>
+-            <input type="password" name="password" class="form-control" placeholder="Buat password" required>
++    $password      = trim($_POST['password']);
++    if (empty($nik) || empty($nama_lengkap) || empty($jenis_kelamin) || empty($username) || empty($password)) {
++        $error = "NIK, Nama Lengkap, Jenis Kelamin, Username, dan Password wajib diisi!";
++                $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
++                $stmtUser = $db->prepare("INSERT INTO user (username, password, role) VALUES (?, ?, 'jamaah')");
++                $stmtUser->execute([$username, $hashedPassword]);
++            <label class="form-label small fw-bold">Password</label>
++            <input type="password" name="password" class="form-control" placeholder="Buat password" required>
++    private $password = "";
++                $this->password,
++    polos kayak backend. Proses cek username/password tetap
++    $password = trim($_POST['password']);
++    if ($auth->login($username, $password)) {
++        $error = "Username atau password salah!";
++                  <label class="form-label small fw-bold">Password</label>
++                  <input type="password" name="password" class="form-control" placeholder="Masukkan password" required>
++    $password      = trim($_POST['password']);
++    if (empty($nik) || empty($nama_lengkap) || empty($jenis_kelamin) || empty($username) || empty($password)) {
++        $error = "NIK, Nama Lengkap, Jenis Kelamin, Username, dan Password wajib diisi!";
++                $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
++                $stmtUser = $db->prepare("INSERT INTO user (username, password, role) VALUES (?, ?, 'jamaah')");
++                $stmtUser->execute([$username, $hashedPassword]);
++                  <label class="form-label small fw-bold">Password</label>
++                  <input type="password" name="password" class="form-control" placeholder="Buat password" required>
+-    'password' => 'pass',
++    'password' => 'pass',
++    'password' => 'pass',
+-    'password' => 'pass',
++    'password' => 'pass',
++    'password' => 'pass',
+-    public function login($username, $password) {
+-            // Cek password hash atau fallback plain-text (untuk data dummy awal)
+-            if (password_verify($password, $user['password']) || $password === $user['password']) {
++    public function login($username, $password) {
++            // Cek password hash atau fallback plain-text (untuk data dummy awal)
++            if (password_verify($password, $user['password']) || $password === $user['password']) {
+-    private $password = "";
+-                $this->password,
++    private $password = "";
++                $this->password,
+-                        <label for="password" class="form-label small fw-semibold" style="color: #44403c;">Password</label>
+-                        <input type="password" class="form-control form-control-lg fs-6" id="password" name="password" placeholder="Masukkan password" required>
++                        <label for="password" class="form-label small fw-semibold" style="color: #44403c;">Password</label>
++                        <input type="password" class="form-control form-control-lg fs-6" id="password" name="password" placeholder="Masukkan password" required>
+-                    <?= $currentUserRole === 'petugas' ? 'Ubah Password Petugas' : 'Edit Data User'; ?>
+-                    <?= $currentUserRole === 'petugas' ? 'Silakan masukkan password baru untuk akun ini.' : 'Perbarui informasi dan hak akses pengguna sistem.'; ?>
+-                    <!-- Password Baru -->
+-                        <label for="password" class="form-label small fw-semibold" style="color: #44403c;">Password Baru <span class="text-muted fw-normal">(Kosongkan jika tidak ingin diubah)</span></label>
+-                        <input type="password" class="form-control form-control-lg fs-6" id="password" name="password" placeholder="Masukkan password baru...">
++                    <?= $currentUserRole === 'petugas' ? 'Ubah Password Petugas' : 'Edit Data User'; ?>
++                    <?= $currentUserRole === 'petugas' ? 'Silakan masukkan password baru untuk akun ini.' : 'Perbarui informasi dan hak akses pengguna sistem.'; ?>
++                    <!-- Password Baru -->
++                        <label for="password" class="form-label small fw-semibold" style="color: #44403c;">Password Baru <span class="text-muted fw-normal">(Kosongkan jika tidak ingin diubah)</span></label>
++                        <input type="password" class="form-control form-control-lg fs-6" id="password" name="password" placeholder="Masukkan password baru...">
+-    $password = trim($_POST['password']);
+-    if ($auth->login($username, $password)) {
+-        $error = "Username atau password salah!";
+-            <label class="form-label small fw-bold">Password</label>
+-            <input type="password" name="password" class="form-control" placeholder="Masukkan password" required>
++    $password = trim($_POST['password']);
++    if ($auth->login($username, $password)) {
++        $error = "Username atau password salah!";
++            <label class="form-label small fw-bold">Password</label>
++            <input type="password" name="password" class="form-control" placeholder="Masukkan password" required>
++// 3. Proses Ganti Password
++if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_password'])) {
++    $passLama = $_POST['password_lama'] ?? '';
++    $passBaru = $_POST['password_baru'] ?? '';
++    $konfirm  = $_POST['konfirmasi_password'] ?? '';
++        $errorMessage = "Semua kolom password wajib diisi!";
++        $errorMessage = "Konfirmasi password baru tidak cocok!";
++            $stmtUser = $db->prepare("SELECT password FROM user WHERE id = :id");
++            if ($userRow && password_verify($passLama, $userRow['password'])) {
++                $newHash = password_hash($passBaru, PASSWORD_BCRYPT);
++                $stmtPass = $db->prepare("UPDATE user SET password = :pass WHERE id = :id");
++                $successMessage = "Password berhasil diperbarui!";
++                $errorMessage = "Password lama Anda salah!";
++            $errorMessage = "Gagal mengubah password: " . $e->getMessage();
++                                <button class="nav-link" id="password-tab" data-bs-toggle="tab" data-bs-target="#password-panel" type="button" role="tab">
++                                    <i class="fas fa-key me-2"></i>Ganti Password
++                            <!-- TAB 2: GANTI PASSWORD -->
++                            <div class="tab-pane fade" id="password-panel" role="tabpanel">
++                                            <label class="form-label fw-semibold text-secondary small">Password Lama <span class="text-danger">*</span></label>
++                                            <input type="password" name="password_lama" class="form-control py-2 rounded-3" placeholder="Masukkan password saat ini" required>
++                                            <label class="form-label fw-semibold text-secondary small">Password Baru <span class="text-danger">*</span></label>
++                                            <input type="password" name="password_baru" class="form-control py-2 rounded-3" placeholder="Masukkan password baru" required>
++                                            <label class="form-label fw-semibold text-secondary small">Konfirmasi Password Baru <span class="text-danger">*</span></label>
++                                            <input type="password" name="konfirmasi_password" class="form-control py-2 rounded-3" placeholder="Ulangi password baru" required>
++                                        <button type="submit" name="update_password" class="btn btn-dark px-4 py-2 rounded-3 shadow-sm">
++                                            <i class="fas fa-lock me-1"></i> Perbarui Password
+-                <h3 class="fw-bold mb-0" style="color: #2c2825;">Ubah Password Petugas</h3>
+-                <p class="mb-0 small" style="color: #78716c;">Silakan perbarui password akun Anda di bawah ini.</p>
+-                    <!-- Password Baru -->
+-                        <label for="password" class="form-label small fw-semibold" style="color: #44403c;">Password Baru <span class="text-muted fw-normal">(Kosongkan jika tidak ingin diubah)</span></label>
+-                        <input type="password" class="form-control form-control-lg fs-6" id="password" name="password" placeholder="Masukkan password baru...">
++                <h3 class="fw-bold mb-0" style="color: #2c2825;">Ubah Password Petugas</h3>
++                <p class="mb-0 small" style="color: #78716c;">Silakan perbarui password akun Anda di bawah ini.</p>
++                    <!-- Password Baru -->
++                        <label for="password" class="form-label small fw-semibold" style="color: #44403c;">Password Baru <span class="text-muted fw-normal">(Kosongkan jika tidak ingin diubah)</span></label>
++                        <input type="password" class="form-control form-control-lg fs-6" id="password" name="password" placeholder="Masukkan password baru...">
+-    $password = $_POST['password'] ?? '';
+-    if (empty($username) || empty($password) || empty($role)) {
+-    $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+-    $stmt = $db->prepare("INSERT INTO user (username, password, role) VALUES (:username, :password, :role)");
+-    $stmt->bindParam(':password', $hashedPassword);
++    $password = $_POST['password'] ?? '';
++   if (empty($username) || empty($password)) {
++    $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
++    $stmt = $db->prepare("INSERT INTO user (username, password, role) VALUES (:username, :password, :role)");
++    $stmt->bindParam(':password', $hashedPassword);
+-    $password = $_POST['password'] ?? '';
+-    // Cek apakah password diisi atau dikosongkan
+-    if (!empty($password)) {
+-        // Jika password diisi, update username, password, dan role
+-        $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+-        $query = "UPDATE user SET username = :username, password = :password, role = :role WHERE id = :id";
+-        $stmt->bindParam(':password', $hashedPassword);
+-        // Jika password kosong, update username dan role saja
++    $password = $_POST['password'] ?? '';
++    // Cek apakah password diisi atau dikosongkan
++    if (!empty($password)) {
++        // Jika password diisi, update username, password, dan role
++        $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
++        $query = "UPDATE user SET username = :username, password = :password, role = :role WHERE id = :id";
++        $stmt->bindParam(':password', $hashedPassword);
++        // Jika password kosong, update username dan role saja
+-    $password      = trim($_POST['password']);
+-    if (empty($nik) || empty($nama_lengkap) || empty($jenis_kelamin) || empty($username) || empty($password)) {
+-        $error = "NIK, Nama Lengkap, Jenis Kelamin, Username, dan Password wajib diisi!";
+-                $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+-                $stmtUser = $db->prepare("INSERT INTO user (username, password, role) VALUES (?, ?, 'jamaah')");
+-                $stmtUser->execute([$username, $hashedPassword]);
+-            <label class="form-label small fw-bold">Password</label>
+-            <input type="password" name="password" class="form-control" placeholder="Buat password" required>
++    $password      = trim($_POST['password']);
++    if (empty($nik) || empty($nama_lengkap) || empty($jenis_kelamin) || empty($username) || empty($password)) {
++        $error = "NIK, Nama Lengkap, Jenis Kelamin, Username, dan Password wajib diisi!";
++                $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
++                $stmtUser = $db->prepare("INSERT INTO user (username, password, role) VALUES (?, ?, 'jamaah')");
++                $stmtUser->execute([$username, $hashedPassword]);
++            <label class="form-label small fw-bold">Password</label>
++            <input type="password" name="password" class="form-control" placeholder="Buat password" required>
++    'password' => 'pass',
++    'password' => 'pass',
+             <label class="form-label small fw-bold">Password</label>
+             <input type="password" name="password" class="form-control" placeholder="Masukkan password" required>
++    $password      = trim($_POST['password']);
++    if (empty($nik) || empty($nama_lengkap) || empty($jenis_kelamin) || empty($username) || empty($password)) {
++        $error = "NIK, Nama Lengkap, Jenis Kelamin, Username, dan Password wajib diisi!";
++                $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
++                $stmtUser = $db->prepare("INSERT INTO user (username, password, role) VALUES (?, ?, 'jamaah')");
++                $stmtUser->execute([$username, $hashedPassword]);
++            <label class="form-label small fw-bold">Password</label>
++            <input type="password" name="password" class="form-control" placeholder="Buat password" required>
++    public function login($username, $password) {
++            // Cek password hash atau fallback plain-text (untuk data dummy awal)
++            if (password_verify($password, $user['password']) || $password === $user['password']) {
++    private $password = "";
++                $this->password,
++                        <label for="password" class="form-label small fw-semibold" style="color: #44403c;">Password</label>
++                        <input type="password" class="form-control form-control-lg fs-6" id="password" name="password" placeholder="Masukkan password" required>
++                    <?= $currentUserRole === 'petugas' ? 'Ubah Password Petugas' : 'Edit Data User'; ?>
++                    <?= $currentUserRole === 'petugas' ? 'Silakan masukkan password baru untuk akun ini.' : 'Perbarui informasi dan hak akses pengguna sistem.'; ?>
++                    <!-- Password Baru -->
++                        <label for="password" class="form-label small fw-semibold" style="color: #44403c;">Password Baru <span class="text-muted fw-normal">(Kosongkan jika tidak ingin diubah)</span></label>
++                        <input type="password" class="form-control form-control-lg fs-6" id="password" name="password" placeholder="Masukkan password baru...">
++    $password = trim($_POST['password']);
++    if ($auth->login($username, $password)) {
++        $error = "Username atau password salah!";
++            <label class="form-label small fw-bold">Password</label>
++            <input type="password" name="password" class="form-control" placeholder="Masukkan password" required>
++                <h3 class="fw-bold mb-0" style="color: #2c2825;">Ubah Password Petugas</h3>
++                <p class="mb-0 small" style="color: #78716c;">Silakan perbarui password akun Anda di bawah ini.</p>
++                    <!-- Password Baru -->
++                        <label for="password" class="form-label small fw-semibold" style="color: #44403c;">Password Baru <span class="text-muted fw-normal">(Kosongkan jika tidak ingin diubah)</span></label>
++                        <input type="password" class="form-control form-control-lg fs-6" id="password" name="password" placeholder="Masukkan password baru...">
++    $password = $_POST['password'] ?? '';
++    if (empty($username) || empty($password) || empty($role)) {
++    $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
++    $stmt = $db->prepare("INSERT INTO user (username, password, role) VALUES (:username, :password, :role)");
++    $stmt->bindParam(':password', $hashedPassword);
++    $password = $_POST['password'] ?? '';
++    // Cek apakah password diisi atau dikosongkan
++    if (!empty($password)) {
++        // Jika password diisi, update username, password, dan role
++        $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
++        $query = "UPDATE user SET username = :username, password = :password, role = :role WHERE id = :id";
++        $stmt->bindParam(':password', $hashedPassword);
++        // Jika password kosong, update username dan role saja

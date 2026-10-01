@@ -1,0 +1,4 @@
+git show 109abf39^:travel_haji_umroh.sql
+
+
+git show 109abf39^:travel_haji_umroh.sql > ~/Hack/UK1/UK1-Rinjani/travel_haji_umroh.sql 

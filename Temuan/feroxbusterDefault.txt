@@ -1,0 +1,576 @@
+Configuration {
+    kind: "configuration",
+    wordlist: "/usr/share/feroxbuster/raft-medium-directories.txt",
+    config: "/etc/feroxbuster/ferox-config.toml",
+    proxy: "",
+    replay_proxy: "",
+    server_certs: [],
+    client_cert: "",
+    client_key: "",
+    target_url: "http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani",
+    status_codes: [
+        100,
+        101,
+        102,
+        200,
+        201,
+        202,
+        203,
+        204,
+        205,
+        206,
+        207,
+        208,
+        226,
+        300,
+        301,
+        302,
+        303,
+        304,
+        305,
+        307,
+        308,
+        400,
+        401,
+        402,
+        403,
+        404,
+        405,
+        406,
+        407,
+        408,
+        409,
+        410,
+        411,
+        412,
+        413,
+        414,
+        415,
+        416,
+        417,
+        418,
+        421,
+        422,
+        423,
+        424,
+        426,
+        428,
+        429,
+        431,
+        451,
+        500,
+        501,
+        502,
+        503,
+        504,
+        505,
+        506,
+        507,
+        508,
+        510,
+        511,
+        103,
+        425,
+    ],
+    replay_codes: [
+        100,
+        101,
+        102,
+        200,
+        201,
+        202,
+        203,
+        204,
+        205,
+        206,
+        207,
+        208,
+        226,
+        300,
+        301,
+        302,
+        303,
+        304,
+        305,
+        307,
+        308,
+        400,
+        401,
+        402,
+        403,
+        404,
+        405,
+        406,
+        407,
+        408,
+        409,
+        410,
+        411,
+        412,
+        413,
+        414,
+        415,
+        416,
+        417,
+        418,
+        421,
+        422,
+        423,
+        424,
+        426,
+        428,
+        429,
+        431,
+        451,
+        500,
+        501,
+        502,
+        503,
+        504,
+        505,
+        506,
+        507,
+        508,
+        510,
+        511,
+        103,
+        425,
+    ],
+    filter_status: [],
+    client: Client {
+        accepts: Accepts,
+        proxies: [
+            Matcher,
+        ],
+        redirect_policy: "Policy(None)",
+        referer: true,
+        default_headers: {
+            "accept": "*/*",
+            "user-agent": "feroxbuster/2.13.1",
+        },
+        reqwest::config::RequestTimeout: 7s,
+    },
+    replay_client: None,
+    threads: 50,
+    timeout: 7,
+    verbosity: 0,
+    silent: false,
+    quiet: false,
+    output_level: Default,
+    auto_bail: false,
+    auto_tune: false,
+    requester_policy: Default,
+    json: false,
+    output: "feroxbuterDefault.txt",
+    debug_log: "",
+    user_agent: "feroxbuster/2.13.1",
+    random_agent: false,
+    redirects: false,
+    insecure: false,
+    extensions: [],
+    methods: [
+        "GET",
+    ],
+    data: [],
+    headers: {},
+    queries: [],
+    no_recursion: false,
+    extract_links: true,
+    add_slash: false,
+    stdin: false,
+    cached_stdin: [],
+    depth: 4,
+    scan_limit: 0,
+    parallel: 0,
+    rate_limit: 0,
+    filter_size: [],
+    filter_line_count: [],
+    filter_word_count: [],
+    filter_regex: [],
+    dont_filter: false,
+    resumed: false,
+    resume_from: "",
+    save_state: true,
+    time_limit: "",
+    filter_similar: [],
+    url_denylist: [],
+    regex_denylist: [],
+    scope: [
+        Url {
+            scheme: "http",
+            cannot_be_a_base: false,
+            username: "",
+            password: None,
+            host: Some(
+                Ipv4(
+                    192.168.100.247,
+                ),
+            ),
+            port: None,
+            path: "/UK-PKL_Banjar/UK1/UK1-Rinjani",
+            query: None,
+            fragment: None,
+        },
+    ],
+    collect_extensions: false,
+    dont_collect: [
+        "woff2",
+        "woff",
+        "ttf",
+        "otf",
+        "eot",
+        "tif",
+        "tiff",
+        "ico",
+        "cur",
+        "bmp",
+        "webp",
+        "svg",
+        "png",
+        "jpg",
+        "jpeg",
+        "jfif",
+        "gif",
+        "avif",
+        "apng",
+        "pjpeg",
+        "pjp",
+        "mov",
+        "wav",
+        "mpg",
+        "mpeg",
+        "mp3",
+        "mp4",
+        "m4a",
+        "m4p",
+        "m4v",
+        "ogg",
+        "webm",
+        "ogv",
+        "oga",
+        "flac",
+        "aac",
+        "3gp",
+        "css",
+        "zip",
+        "xls",
+        "xml",
+        "gz",
+        "tgz",
+    ],
+    collect_backups: false,
+    backup_extensions: [
+        "~",
+        ".bak",
+        ".bak2",
+        ".old",
+        ".1",
+    ],
+    collect_words: false,
+    force_recursion: false,
+    update_app: false,
+    scan_dir_listings: false,
+    request_file: "",
+    protocol: "https",
+    limit_bars: 0,
+    unique: false,
+    response_size_limit: 4194304,
+}
+301      GET        7l       20w      261c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/
+301      GET        7l       20w      269c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/
+301      GET        7l       20w      270c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend (Apache)
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/components (Apache)
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/pages (Apache)
+200      GET       27l       71w      977c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/components/footer.php
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/template (Apache)
+200      GET      213l      602w     9000c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/template/starter-page.html
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/template/forms (Apache)
+200      GET        2l        8w       46c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/template/forms/newsletter.php
+200      GET        2l        8w       46c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/template/forms/contact.php
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/template/assets (Apache)
+200      GET       52l      123w     1526c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/components/header.php
+200      GET      134l      413w     6642c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/pages/register.php
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/database (Apache)
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/classes (Apache)
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/database/connection.php
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/Components (Apache)
+200      GET        9l       36w      316c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/Components/footer.php
+200      GET      125l      255w     2977c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/Components/sidebar.php
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/database (Apache)
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/database/connection.php
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/partials (Apache)
+200      GET       81l      281w     3712c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/partials/head.php
+200      GET        2l       21w      185c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/template/forms/Readme.txt
+302      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/pages/pilih-layanan.php => login.php?redirect=pilih-layanan.php
+200      GET       13l       28w      833c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/partials/script.php
+200      GET      110l      322w     5116c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/pages/login.php
+302      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/pages/paket-detail.php => login.php?redirect=paket-detail.php%3Fid%3D0
+200      GET        7l       43w      607c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/pages/proses-pendaftaran.php
+302      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/pages/riwayat.php => login.php?redirect=riwayat.php
+200      GET       44l      140w     1592c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/pages/about.php
+200      GET      240l      561w     9022c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/pages/services.php
+200      GET       19l       90w     1042c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/pages/hero.php
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/process (Apache)
+200      GET        7l       43w      604c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/process/proses_delete_jadwal.php
+200      GET        7l       43w      595c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/process/proses_hapus_user.php
+301      GET        7l       20w      280c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/components => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/components/
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/classes/Paket.php
+200      GET        1l        3w       19c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/classes/Auth.php
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/classes/User.php
+301      GET        7l       20w      278c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/Database => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/Database/
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/Database (Apache)
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/Database/connection.php
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/components (Apache)
+200      GET      125l      255w     2977c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/components/sidebar.php
+200      GET        9l       36w      316c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/components/footer.php
+200      GET       54l      134w     2078c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/components/bottom.php
+200      GET       25l      112w     1472c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/components/topbar.php
+200      GET      130l      263w     3575c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/components/header.php
+301      GET        7l       20w      277c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/Classes => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/Classes/
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/Classes (Apache)
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/Classes/User.php
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/Classes/Paket.php
+200      GET        1l        3w       19c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/Classes/Auth.php
+301      GET        7l       20w      280c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/Components => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/Components/
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/classes/Pendaftaran.php
+200      GET       54l      134w     2078c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/Components/bottom.php
+301      GET        7l       20w      269c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/
+301      GET        7l       20w      278c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/database => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/database/
+200      GET      130l      263w     3575c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/Components/header.php
+301      GET        7l       20w      277c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/classes => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/classes/
+200      GET       25l      112w     1472c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/Components/topbar.php
+200      GET        1l       10w      166c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/partials/scroll-top.php
+301      GET        7l       20w      277c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/process => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/process/
+301      GET        7l       20w      269c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/
+301      GET        7l       20w      270c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FrontEnd => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FrontEnd/
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/Classes/Pendaftaran.php
+301      GET        7l       20w      278c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/DataBase => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/DataBase/
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/DataBase (Apache)
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/DataBase/connection.php
+301      GET        7l       20w      270c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Frontend => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Frontend/
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FrontEnd (Apache)
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FrontEnd/database (Apache)
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FrontEnd/components (Apache)
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FrontEnd/pages (Apache)
+200      GET      134l      413w     6642c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FrontEnd/pages/register.php
+302      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FrontEnd/pages/pilih-layanan.php => login.php?redirect=pilih-layanan.php
+200      GET       44l      140w     1592c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FrontEnd/pages/about.php
+200      GET        7l       43w      607c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FrontEnd/pages/proses-pendaftaran.php
+302      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FrontEnd/pages/paket-detail.php => login.php?redirect=paket-detail.php%3Fid%3D0
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/components (Apache)
+200      GET      130l      263w     3575c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/components/header.php
+200      GET      125l      255w     2977c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/components/sidebar.php
+200      GET       54l      134w     2078c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/components/bottom.php
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Frontend (Apache)
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FrontEnd/template (Apache)
+200      GET        9l       36w      316c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/components/footer.php
+200      GET       25l      112w     1472c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/components/topbar.php
+200      GET      213l      602w     9000c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FrontEnd/template/starter-page.html
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Frontend/partials (Apache)
+200      GET       81l      281w     3712c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Frontend/partials/head.php
+200      GET        1l       10w      166c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Frontend/partials/scroll-top.php
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FrontEnd/template/assets (Apache)
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/database (Apache)
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Frontend/components (Apache)
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Frontend/template (Apache)
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/database (Apache)
+200      GET       13l       28w      833c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Frontend/partials/script.php
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Frontend/database (Apache)
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Frontend/pages (Apache)
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Frontend/database/connection.php
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/database/connection.php
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/database/connection.php
+301      GET        7l       20w      278c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/database => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/database/
+200      GET       19l       90w     1042c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Frontend/pages/hero.php
+302      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Frontend/pages/paket-detail.php => login.php?redirect=paket-detail.php%3Fid%3D0
+200      GET       27l       71w      977c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Frontend/components/footer.php
+200      GET      213l      602w     9000c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Frontend/template/starter-page.html
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Frontend/template/assets (Apache)
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FrontEnd/template/forms (Apache)
+302      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Frontend/pages/pilih-layanan.php => login.php?redirect=pilih-layanan.php
+200      GET      134l      413w     6642c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Frontend/pages/register.php
+200      GET        2l       21w      185c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FrontEnd/template/forms/Readme.txt
+200      GET      240l      561w     9022c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Frontend/pages/services.php
+301      GET        7l       20w      277c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/classes => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/classes/
+200      GET        2l        8w       46c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FrontEnd/template/forms/contact.php
+200      GET        2l        8w       46c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FrontEnd/template/forms/newsletter.php
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/classes (Apache)
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Frontend/template/forms (Apache)
+200      GET        2l        8w       46c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Frontend/template/forms/contact.php
+200      GET        1l        3w       19c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/classes/Auth.php
+200      GET        2l       21w      185c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Frontend/template/forms/Readme.txt
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/classes/Paket.php
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/classes/User.php
+200      GET        2l        8w       46c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Frontend/template/forms/newsletter.php
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/classes/Pendaftaran.php
+301      GET        7l       20w      277c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/classes => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/classes/
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/classes (Apache)
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/classes/Pendaftaran.php
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/classes/Paket.php
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/classes/User.php
+200      GET        1l        3w       19c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/classes/Auth.php
+301      GET        7l       20w      270c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FRONTEND => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FRONTEND/
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FRONTEND (Apache)
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FRONTEND/components (Apache)
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FRONTEND/pages (Apache)
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FRONTEND/database (Apache)
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FRONTEND/partials (Apache)
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FRONTEND/database/connection.php
+200      GET       19l       90w     1042c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FRONTEND/pages/hero.php
+200      GET        1l       10w      166c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FRONTEND/partials/scroll-top.php
+200      GET       44l      140w     1592c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FRONTEND/pages/about.php
+200      GET       27l       71w      977c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FRONTEND/components/footer.php
+200      GET       52l      123w     1526c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FRONTEND/components/header.php
+200      GET      110l      322w     5116c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FRONTEND/pages/login.php
+302      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FRONTEND/pages/paket-detail.php => login.php?redirect=paket-detail.php%3Fid%3D0
+302      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FRONTEND/pages/pilih-layanan.php => login.php?redirect=pilih-layanan.php
+200      GET        7l       43w      607c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FRONTEND/pages/proses-pendaftaran.php
+302      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FRONTEND/pages/riwayat.php => login.php?redirect=riwayat.php
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FRONTEND/template (Apache)
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FrontEnd/database/connection.php
+200      GET       52l      123w     1526c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FrontEnd/components/header.php
+200      GET       27l       71w      977c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FrontEnd/components/footer.php
+200      GET      134l      413w     6642c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FRONTEND/pages/register.php
+200      GET      240l      561w     9022c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FRONTEND/pages/services.php
+301      GET        7l       20w      280c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/Components => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/Components/
+200      GET      213l      602w     9000c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FRONTEND/template/starter-page.html
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FRONTEND/template/assets (Apache)
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FrontEnd/partials (Apache)
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FRONTEND/template/forms (Apache)
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/Components (Apache)
+200      GET       81l      281w     3712c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FrontEnd/partials/head.php
+200      GET        9l       36w      316c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/Components/footer.php
+200      GET        1l       10w      166c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FrontEnd/partials/scroll-top.php
+200      GET       25l      112w     1472c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/Components/topbar.php
+200      GET        2l        8w       46c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FRONTEND/template/forms/contact.php
+200      GET      125l      255w     2977c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/Components/sidebar.php
+200      GET       54l      134w     2078c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/Components/bottom.php
+200      GET        2l       21w      185c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FRONTEND/template/forms/Readme.txt
+200      GET      130l      263w     3575c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/Components/header.php
+200      GET        2l        8w       46c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FRONTEND/template/forms/newsletter.php
+200      GET       13l       28w      833c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FrontEnd/partials/script.php
+301      GET        7l       20w      277c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/Process => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/Process/
+302      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FrontEnd/pages/riwayat.php => login.php?redirect=riwayat.php
+200      GET      110l      322w     5116c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FrontEnd/pages/login.php
+200      GET       19l       90w     1042c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FrontEnd/pages/hero.php
+200      GET      240l      561w     9022c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FrontEnd/pages/services.php
+301      GET        7l       20w      277c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/process => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/process/
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/process (Apache)
+200      GET        7l       43w      595c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/process/proses_hapus_user.php
+200      GET        7l       43w      604c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/process/proses_delete_jadwal.php
+301      GET        7l       20w      280c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/components => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/components/
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/components (Apache)
+200      GET       54l      134w     2078c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/components/bottom.php
+200      GET      125l      255w     2977c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/components/sidebar.php
+200      GET        9l       36w      316c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/components/footer.php
+200      GET      130l      263w     3575c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/components/header.php
+200      GET       25l      112w     1472c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/components/topbar.php
+301      GET        7l       20w      280c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/Components => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/Components/
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/Components (Apache)
+200      GET      130l      263w     3575c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/Components/header.php
+200      GET       25l      112w     1472c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/Components/topbar.php
+200      GET       54l      134w     2078c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/Components/bottom.php
+200      GET        9l       36w      316c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/Components/footer.php
+200      GET      125l      255w     2977c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/Components/sidebar.php
+301      GET        7l       20w      278c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/Database => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/Database/
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/Database (Apache)
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/Database/connection.php
+301      GET        7l       20w      277c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/Classes => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/Classes/
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/Classes (Apache)
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/Classes/Paket.php
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/Classes/User.php
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/Classes/Pendaftaran.php
+200      GET        1l        3w       19c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/Classes/Auth.php
+301      GET        7l       20w      280c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/components => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/components/
+301      GET        7l       20w      277c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/process => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/process/
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/process (Apache)
+301      GET        7l       20w      278c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/database => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/database/
+200      GET      110l      322w     5116c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Frontend/pages/login.php
+200      GET       13l       28w      833c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FRONTEND/partials/script.php
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/Process (Apache)
+200      GET       81l      281w     3712c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FRONTEND/partials/head.php
+200      GET        7l       43w      595c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/Process/proses_hapus_user.php
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/Database (Apache)
+301      GET        7l       20w      277c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/Classes => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/Classes/
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/Classes (Apache)
+200      GET        7l       43w      595c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/process/proses_hapus_user.php
+301      GET        7l       20w      278c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/Database => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/Database/
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/Classes/Paket.php
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/Classes/User.php
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/Classes/Pendaftaran.php
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/Database/connection.php
+200      GET        1l        3w       19c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/Classes/Auth.php
+301      GET        7l       20w      277c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/CLASSES => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/CLASSES/
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/CLASSES (Apache)
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/COMPONENTS (Apache)
+200      GET        9l       36w      316c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/COMPONENTS/footer.php
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/CLASSES/Paket.php
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/CLASSES/Pendaftaran.php
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/DATABASE (Apache)
+301      GET        7l       20w      278c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/DATABASE => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/DATABASE/
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/DATABASE/connection.php
+301      GET        7l       20w      277c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/PROCESS => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/PROCESS/
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/PROCESS (Apache)
+301      GET        7l       20w      278c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/DataBase => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/DataBase/
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/DataBase (Apache)
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/DataBase/connection.php
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/CLASSES/User.php
+301      GET        7l       20w      280c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/COMPONENTS => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/COMPONENTS/
+200      GET       25l      112w     1472c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/COMPONENTS/topbar.php
+200      GET        1l        3w       19c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/CLASSES/Auth.php
+200      GET       54l      134w     2078c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/COMPONENTS/bottom.php
+200      GET      130l      263w     3575c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/COMPONENTS/header.php
+200      GET        7l       43w      595c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/PROCESS/proses_hapus_user.php
+200      GET      125l      255w     2977c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/COMPONENTS/sidebar.php
+200      GET        7l       43w      604c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/PROCESS/proses_delete_jadwal.php
+301      GET        7l       20w      278c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/DataBase => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/DataBase/
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/DataBase (Apache)
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/DataBase/connection.php
+301      GET        7l       20w      277c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/Process => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/Process/
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/Process (Apache)
+200      GET        7l       43w      604c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/Process/proses_delete_jadwal.php
+200      GET        7l       43w      595c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/Process/proses_hapus_user.php
+301      GET        7l       20w      277c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/Process => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/Process/
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/Process (Apache)
+200      GET        7l       43w      595c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/Process/proses_hapus_user.php
+200      GET        7l       43w      604c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/Process/proses_delete_jadwal.php
+301      GET        7l       20w      277c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/CLASSES => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/CLASSES/
+301      GET        7l       20w      280c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/COMPONENTS => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/COMPONENTS/
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/CLASSES (Apache)
+200      GET        1l        3w       19c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/CLASSES/Auth.php
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/CLASSES/Paket.php
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/CLASSES/User.php
+301      GET        7l       20w      278c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/DATABASE => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/DATABASE/
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/DATABASE (Apache)
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/DATABASE/connection.php
+301      GET        7l       20w      277c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/PROCESS => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/PROCESS/
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/PROCESS (Apache)
+200      GET        7l       43w      595c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/PROCESS/proses_hapus_user.php
+200      GET        7l       43w      604c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/PROCESS/proses_delete_jadwal.php
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/COMPONENTS (Apache)
+200      GET       54l      134w     2078c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/COMPONENTS/bottom.php
+200      GET      130l      263w     3575c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/COMPONENTS/header.php
+200      GET       25l      112w     1472c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/COMPONENTS/topbar.php
+200      GET        9l       36w      316c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/COMPONENTS/footer.php
+200      GET      125l      255w     2977c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/COMPONENTS/sidebar.php
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/CLASSES (Apache)
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/COMPONENTS (Apache)
+301      GET        7l       20w      277c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/CLASSES => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/CLASSES/
+301      GET        7l       20w      280c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/COMPONENTS => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/COMPONENTS/
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/CLASSES/User.php
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/CLASSES/Pendaftaran.php
+200      GET        1l        3w       19c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/CLASSES/Auth.php
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/CLASSES/Paket.php
+200      GET       25l      112w     1472c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/COMPONENTS/topbar.php
+200      GET      125l      255w     2977c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/COMPONENTS/sidebar.php
+200      GET       54l      134w     2078c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/COMPONENTS/bottom.php
+200      GET      130l      263w     3575c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/COMPONENTS/header.php
+200      GET        9l       36w      316c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/COMPONENTS/footer.php
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/DATABASE (Apache)
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/DATABASE/connection.php
+301      GET        7l       20w      278c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/DATABASE => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/DATABASE/
+MSG      0.000 feroxbuster::heuristics detected directory listing: http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/PROCESS (Apache)
+301      GET        7l       20w      277c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/PROCESS => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/PROCESS/
+200      GET        7l       43w      595c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/PROCESS/proses_hapus_user.php
+200      GET        7l       43w      604c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/PROCESS/proses_delete_jadwal.php

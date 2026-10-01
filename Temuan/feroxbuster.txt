@@ -1,0 +1,387 @@
+┌──(gh0st4n㉿Gh0sT4n)-[~/Hack/UK1/UK1-Rinjani]
+└─$ feroxbuster -u http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/ -w /usr/share/wordlists/dirb/common.txt -o feroxbusterWordlists.txt
+                                                                                                                                                                                                                          
+ ___  ___  __   __     __      __         __   ___
+|__  |__  |__) |__) | /  `    /  \ \_/ | |  \ |__
+|    |___ |  \ |  \ | \__,    \__/ / \ | |__/ |___
+by Ben "epi" Risher 🤓                 ver: 2.13.1
+───────────────────────────┬──────────────────────
+ 🎯  Target Url            │ http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani
+ 🚩  In-Scope Url          │ 192.168.100.247
+ 🚀  Threads               │ 50
+ 📖  Wordlist              │ /usr/share/wordlists/dirb/common.txt
+ 👌  Status Codes          │ All Status Codes!
+ 💥  Timeout (secs)        │ 7
+ 🦡  User-Agent            │ feroxbuster/2.13.1
+ 💉  Config File           │ /etc/feroxbuster/ferox-config.toml
+ 🔎  Extract Links         │ true
+ 💾  Output File           │ feroxbuterWordlists.txt
+ 🏁  HTTP methods          │ [GET]
+ 🔃  Recursion Depth       │ 4
+───────────────────────────┴──────────────────────
+ 🏁  Press [ENTER] to use the Scan Management Menu™
+──────────────────────────────────────────────────
+404      GET        7l       23w      196c Auto-filtering found 404-like response and created new filter; toggle off with --dont-filter
+403      GET        7l       20w      199c Auto-filtering found 404-like response and created new filter; toggle off with --dont-filter
+200      GET        1l        2w       21c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/.git/HEAD
+301      GET        7l       20w      270c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/
+200      GET       27l       71w      977c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/components/footer.php
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/database/connection.php
+200      GET      213l      602w     9000c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/template/starter-page.html
+200      GET        2l       21w      185c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/template/forms/Readme.txt
+200      GET        2l        8w       46c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/template/forms/newsletter.php
+200      GET        2l        8w       46c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/template/forms/contact.php
+301      GET        7l       20w      269c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/
+200      GET       52l      123w     1526c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/components/header.php
+200      GET        7l       43w      607c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/pages/proses-pendaftaran.php
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/classes/User.php
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/classes/Paket.php
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/classes/Pendaftaran.php
+301      GET        7l       20w      261c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/
+200      GET        1l       10w      166c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/partials/scroll-top.php
+301      GET        7l       20w      280c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/components => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/components/
+200      GET       12l      119w     5496c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/template/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js
+302      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/pages/paket-detail.php => login.php?redirect=paket-detail.php%3Fid%3D0
+200      GET     3529l     7580w    77988c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/template/assets/css/main.css
+200      GET       13l       28w      833c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/partials/script.php
+200      GET        9l       36w      316c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/components/footer.php
+200      GET      130l      263w     3575c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/components/header.php
+200      GET        7l     1210w    80502c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/template/assets/vendor/bootstrap/js/bootstrap.bundle.min.js
+200      GET       25l      112w     1472c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/components/topbar.php
+200      GET       54l      134w     2078c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/components/bottom.php
+200      GET       12l      557w    35456c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/template/assets/vendor/isotope-layout/isotope.pkgd.min.js
+200      GET      125l      255w     2977c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/components/sidebar.php
+200      GET       81l      281w     3712c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/partials/head.php
+302      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/pages/pilih-layanan.php => login.php?redirect=pilih-layanan.php
+200      GET      240l      561w     9022c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/pages/services.php
+301      GET        7l       20w      278c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/database => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/database/
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/database/connection.php
+200      GET       19l       90w     1042c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/pages/hero.php
+302      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/pages/riwayat.php => login.php?redirect=riwayat.php
+200      GET      134l      413w     6642c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/pages/register.php
+200      GET       44l      140w     1592c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/pages/about.php
+200      GET      110l      322w     5116c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/pages/login.php
+302      GET        2l        3w       21c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/index.php => login.php
+301      GET        7l       20w      277c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/process => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/process/
+200      GET        7l       43w      604c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/process/proses_delete_jadwal.php
+200      GET        7l       43w      595c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/process/proses_hapus_user.php
+301      GET        7l       20w      277c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/classes => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/classes/
+200      GET        1l      233w    13749c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/template/assets/vendor/glightbox/css/glightbox.min.css
+200      GET        0l        0w   101662c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/template/assets/vendor/bootstrap-icons/bootstrap-icons.css
+200      GET       56l      189w     7489c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/template/assets/img/apple-touch-icon.png
+200      GET      500l     1345w    19251c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/index.php
+[####################] - 10s     9385/9385    0s      found:43      errors:30     
+[####################] - 9s      4614/4614    502/s   http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/ 
+[####################] - 9s      4614/4614    520/s   http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/ 
+[####################] - 1s      4614/4614    3363/s  http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/ => Directory listing (add --scan-dir-listings to scan)
+[####################] - 1s      4614/4614    3700/s  http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/partials/ => Directory listing (add --scan-dir-listings to scan)
+[####################] - 0s      4614/4614    33679/s http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/template/ => Directory listing (add --scan-dir-listings to scan)
+[####################] - 1s      4614/4614    3930/s  http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/components/ => Directory listing (add --scan-dir-listings to scan)
+[####################] - 2s      4614/4614    2681/s  http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/database/ => Directory listing (add --scan-dir-listings to scan)
+[####################] - 2s      4614/4614    2745/s  http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/pages/ => Directory listing (add --scan-dir-listings to scan)
+[####################] - 0s      4614/4614    53651/s http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/template/forms/ => Directory listing (add --scan-dir-listings to scan)
+[####################] - 2s      4614/4614    2862/s  http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/template/assets/ => Directory listing (add --scan-dir-listings to scan)
+[####################] - 7s      4614/4614    655/s   http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/classes/ => Directory listing (add --scan-dir-listings to scan)
+[####################] - 0s      4614/4614    46606/s http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/components/ => Directory listing (add --scan-dir-listings to scan)
+[####################] - 0s      4614/4614    170889/s http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/database/ => Directory listing (add --scan-dir-listings to scan)
+[####################] - 0s      4614/4614    44365/s http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/process/ => Directory listing (add --scan-dir-listings to scan)                                                                                                                                                                                                                                                                  
+┌──(gh0st4n㉿Gh0sT4n)-[~/Hack/UK1/UK1-Rinjani]
+└─$ feroxbuster -u http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/ -o feroxbusterDefault.txt  
+                                                                                                                                                                                                                          
+ ___  ___  __   __     __      __         __   ___
+|__  |__  |__) |__) | /  `    /  \ \_/ | |  \ |__
+|    |___ |  \ |  \ | \__,    \__/ / \ | |__/ |___
+by Ben "epi" Risher 🤓                 ver: 2.13.1
+───────────────────────────┬──────────────────────
+ 🎯  Target Url            │ http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani
+ 🚩  In-Scope Url          │ 192.168.100.247
+ 🚀  Threads               │ 50
+ 📖  Wordlist              │ /usr/share/feroxbuster/raft-medium-directories.txt
+ 👌  Status Codes          │ All Status Codes!
+ 💥  Timeout (secs)        │ 7
+ 🦡  User-Agent            │ feroxbuster/2.13.1
+ 💉  Config File           │ /etc/feroxbuster/ferox-config.toml
+ 🔎  Extract Links         │ true
+ 💾  Output File           │ feroxbuterDefault.txt
+ 🏁  HTTP methods          │ [GET]
+ 🔃  Recursion Depth       │ 4
+───────────────────────────┴──────────────────────
+ 🏁  Press [ENTER] to use the Scan Management Menu™
+──────────────────────────────────────────────────
+404      GET        7l       23w      196c Auto-filtering found 404-like response and created new filter; toggle off with --dont-filter
+403      GET        7l       20w      199c Auto-filtering found 404-like response and created new filter; toggle off with --dont-filter
+301      GET        7l       20w      261c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/
+301      GET        7l       20w      269c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/
+301      GET        7l       20w      270c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/
+200      GET       27l       71w      977c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/components/footer.php
+200      GET      213l      602w     9000c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/template/starter-page.html
+200      GET        2l        8w       46c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/template/forms/newsletter.php
+200      GET        2l        8w       46c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/template/forms/contact.php
+200      GET       52l      123w     1526c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/components/header.php
+200      GET      134l      413w     6642c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/pages/register.php
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/database/connection.php
+200      GET        9l       36w      316c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/Components/footer.php
+200      GET      125l      255w     2977c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/Components/sidebar.php
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/database/connection.php
+200      GET       81l      281w     3712c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/partials/head.php
+200      GET        2l       21w      185c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/template/forms/Readme.txt
+302      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/pages/pilih-layanan.php => login.php?redirect=pilih-layanan.php
+200      GET       13l       28w      833c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/partials/script.php
+200      GET      110l      322w     5116c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/pages/login.php
+302      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/pages/paket-detail.php => login.php?redirect=paket-detail.php%3Fid%3D0
+200      GET        7l       43w      607c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/pages/proses-pendaftaran.php
+302      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/pages/riwayat.php => login.php?redirect=riwayat.php
+200      GET       44l      140w     1592c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/pages/about.php
+200      GET      240l      561w     9022c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/pages/services.php
+200      GET       19l       90w     1042c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/pages/hero.php
+200      GET        7l       43w      604c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/process/proses_delete_jadwal.php
+200      GET        7l       43w      595c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/process/proses_hapus_user.php
+301      GET        7l       20w      280c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/components => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/components/
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/classes/Paket.php
+200      GET        1l        3w       19c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/classes/Auth.php
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/classes/User.php
+301      GET        7l       20w      278c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/Database => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/Database/
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/Database/connection.php
+200      GET      125l      255w     2977c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/components/sidebar.php
+200      GET        9l       36w      316c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/components/footer.php
+200      GET       54l      134w     2078c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/components/bottom.php
+200      GET       25l      112w     1472c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/components/topbar.php
+200      GET      130l      263w     3575c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/components/header.php
+301      GET        7l       20w      277c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/Classes => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/Classes/
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/Classes/User.php
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/Classes/Paket.php
+200      GET        1l        3w       19c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/Classes/Auth.php
+301      GET        7l       20w      280c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/Components => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/Components/
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/classes/Pendaftaran.php
+200      GET       54l      134w     2078c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/Components/bottom.php
+301      GET        7l       20w      269c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/
+301      GET        7l       20w      278c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/database => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/database/
+200      GET      130l      263w     3575c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/Components/header.php
+301      GET        7l       20w      277c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/classes => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/classes/
+200      GET       25l      112w     1472c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/Components/topbar.php
+200      GET        1l       10w      166c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/partials/scroll-top.php
+301      GET        7l       20w      277c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/process => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/process/
+301      GET        7l       20w      269c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/
+301      GET        7l       20w      270c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FrontEnd => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FrontEnd/
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/Classes/Pendaftaran.php
+301      GET        7l       20w      278c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/DataBase => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/DataBase/
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/DataBase/connection.php
+301      GET        7l       20w      270c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Frontend => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Frontend/
+200      GET      134l      413w     6642c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FrontEnd/pages/register.php
+302      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FrontEnd/pages/pilih-layanan.php => login.php?redirect=pilih-layanan.php
+200      GET       44l      140w     1592c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FrontEnd/pages/about.php
+200      GET        7l       43w      607c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FrontEnd/pages/proses-pendaftaran.php
+302      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FrontEnd/pages/paket-detail.php => login.php?redirect=paket-detail.php%3Fid%3D0
+200      GET      130l      263w     3575c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/components/header.php
+200      GET      125l      255w     2977c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/components/sidebar.php
+200      GET       54l      134w     2078c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/components/bottom.php
+200      GET        9l       36w      316c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/components/footer.php
+200      GET       25l      112w     1472c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/components/topbar.php
+200      GET      213l      602w     9000c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FrontEnd/template/starter-page.html
+200      GET       81l      281w     3712c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Frontend/partials/head.php
+200      GET        1l       10w      166c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Frontend/partials/scroll-top.php
+200      GET       13l       28w      833c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Frontend/partials/script.php
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Frontend/database/connection.php
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/database/connection.php
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/database/connection.php
+301      GET        7l       20w      278c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/database => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/database/
+200      GET       19l       90w     1042c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Frontend/pages/hero.php
+302      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Frontend/pages/paket-detail.php => login.php?redirect=paket-detail.php%3Fid%3D0
+200      GET       27l       71w      977c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Frontend/components/footer.php
+200      GET      213l      602w     9000c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Frontend/template/starter-page.html
+302      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Frontend/pages/pilih-layanan.php => login.php?redirect=pilih-layanan.php
+200      GET      134l      413w     6642c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Frontend/pages/register.php
+200      GET        2l       21w      185c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FrontEnd/template/forms/Readme.txt
+200      GET      240l      561w     9022c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Frontend/pages/services.php
+301      GET        7l       20w      277c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/classes => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/classes/
+200      GET        2l        8w       46c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FrontEnd/template/forms/contact.php
+200      GET        2l        8w       46c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FrontEnd/template/forms/newsletter.php
+200      GET        2l        8w       46c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Frontend/template/forms/contact.php
+200      GET        1l        3w       19c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/classes/Auth.php
+200      GET        2l       21w      185c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Frontend/template/forms/Readme.txt
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/classes/Paket.php
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/classes/User.php
+200      GET        2l        8w       46c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Frontend/template/forms/newsletter.php
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/classes/Pendaftaran.php
+301      GET        7l       20w      277c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/classes => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/classes/
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/classes/Pendaftaran.php
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/classes/Paket.php
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/classes/User.php
+200      GET        1l        3w       19c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/classes/Auth.php
+301      GET        7l       20w      270c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FRONTEND => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FRONTEND/
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FRONTEND/database/connection.php
+200      GET       19l       90w     1042c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FRONTEND/pages/hero.php
+200      GET        1l       10w      166c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FRONTEND/partials/scroll-top.php
+200      GET       44l      140w     1592c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FRONTEND/pages/about.php
+200      GET       27l       71w      977c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FRONTEND/components/footer.php
+200      GET       52l      123w     1526c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FRONTEND/components/header.php
+200      GET      110l      322w     5116c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FRONTEND/pages/login.php
+302      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FRONTEND/pages/paket-detail.php => login.php?redirect=paket-detail.php%3Fid%3D0
+302      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FRONTEND/pages/pilih-layanan.php => login.php?redirect=pilih-layanan.php
+200      GET        7l       43w      607c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FRONTEND/pages/proses-pendaftaran.php
+302      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FRONTEND/pages/riwayat.php => login.php?redirect=riwayat.php
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FrontEnd/database/connection.php
+200      GET       52l      123w     1526c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FrontEnd/components/header.php
+200      GET       27l       71w      977c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FrontEnd/components/footer.php
+200      GET      134l      413w     6642c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FRONTEND/pages/register.php
+200      GET      240l      561w     9022c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FRONTEND/pages/services.php
+301      GET        7l       20w      280c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/Components => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/Components/
+200      GET      213l      602w     9000c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FRONTEND/template/starter-page.html
+200      GET       81l      281w     3712c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FrontEnd/partials/head.php
+200      GET        9l       36w      316c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/Components/footer.php
+200      GET        1l       10w      166c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FrontEnd/partials/scroll-top.php
+200      GET       25l      112w     1472c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/Components/topbar.php
+200      GET        2l        8w       46c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FRONTEND/template/forms/contact.php
+200      GET      125l      255w     2977c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/Components/sidebar.php
+200      GET       54l      134w     2078c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/Components/bottom.php
+200      GET        2l       21w      185c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FRONTEND/template/forms/Readme.txt
+200      GET      130l      263w     3575c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/Components/header.php
+200      GET        2l        8w       46c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FRONTEND/template/forms/newsletter.php
+200      GET       13l       28w      833c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FrontEnd/partials/script.php
+301      GET        7l       20w      277c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/Process => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/Process/
+302      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FrontEnd/pages/riwayat.php => login.php?redirect=riwayat.php
+200      GET      110l      322w     5116c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FrontEnd/pages/login.php
+200      GET       19l       90w     1042c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FrontEnd/pages/hero.php
+200      GET      240l      561w     9022c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FrontEnd/pages/services.php
+301      GET        7l       20w      277c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/process => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/process/
+200      GET        7l       43w      595c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/process/proses_hapus_user.php
+200      GET        7l       43w      604c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/process/proses_delete_jadwal.php
+301      GET        7l       20w      280c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/components => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/components/
+200      GET       54l      134w     2078c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/components/bottom.php
+200      GET      125l      255w     2977c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/components/sidebar.php
+200      GET        9l       36w      316c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/components/footer.php
+200      GET      130l      263w     3575c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/components/header.php
+200      GET       25l      112w     1472c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/components/topbar.php
+301      GET        7l       20w      280c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/Components => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/Components/
+200      GET      130l      263w     3575c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/Components/header.php
+200      GET       25l      112w     1472c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/Components/topbar.php
+200      GET       54l      134w     2078c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/Components/bottom.php
+200      GET        9l       36w      316c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/Components/footer.php
+200      GET      125l      255w     2977c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/Components/sidebar.php
+301      GET        7l       20w      278c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/Database => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/Database/
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/Database/connection.php
+301      GET        7l       20w      277c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/Classes => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/Classes/
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/Classes/Paket.php
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/Classes/User.php
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/Classes/Pendaftaran.php
+200      GET        1l        3w       19c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/Classes/Auth.php
+301      GET        7l       20w      280c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/components => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/components/
+301      GET        7l       20w      277c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/process => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/process/
+301      GET        7l       20w      278c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/database => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/database/
+200      GET      110l      322w     5116c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Frontend/pages/login.php
+200      GET       13l       28w      833c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FRONTEND/partials/script.php
+200      GET       81l      281w     3712c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FRONTEND/partials/head.php
+200      GET        7l       43w      595c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/Process/proses_hapus_user.php
+301      GET        7l       20w      277c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/Classes => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/Classes/
+200      GET        7l       43w      595c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/process/proses_hapus_user.php
+301      GET        7l       20w      278c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/Database => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/Database/
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/Classes/Paket.php
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/Classes/User.php
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/Classes/Pendaftaran.php
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/Database/connection.php
+200      GET        1l        3w       19c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/Classes/Auth.php
+301      GET        7l       20w      277c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/CLASSES => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/CLASSES/
+200      GET        9l       36w      316c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/COMPONENTS/footer.php
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/CLASSES/Paket.php
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/CLASSES/Pendaftaran.php
+301      GET        7l       20w      278c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/DATABASE => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/DATABASE/
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/DATABASE/connection.php
+301      GET        7l       20w      277c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/PROCESS => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/PROCESS/
+301      GET        7l       20w      278c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/DataBase => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/DataBase/
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/DataBase/connection.php
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/CLASSES/User.php
+301      GET        7l       20w      280c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/COMPONENTS => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/COMPONENTS/
+200      GET       25l      112w     1472c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/COMPONENTS/topbar.php
+200      GET        1l        3w       19c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/CLASSES/Auth.php
+200      GET       54l      134w     2078c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/COMPONENTS/bottom.php
+200      GET      130l      263w     3575c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/COMPONENTS/header.php
+200      GET        7l       43w      595c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/PROCESS/proses_hapus_user.php
+200      GET      125l      255w     2977c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/COMPONENTS/sidebar.php
+200      GET        7l       43w      604c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/PROCESS/proses_delete_jadwal.php
+301      GET        7l       20w      278c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/DataBase => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/DataBase/
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/DataBase/connection.php
+301      GET        7l       20w      277c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/Process => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/Process/
+200      GET        7l       43w      604c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/Process/proses_delete_jadwal.php
+200      GET        7l       43w      595c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/Process/proses_hapus_user.php
+301      GET        7l       20w      277c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/Process => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/Process/
+200      GET        7l       43w      595c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/Process/proses_hapus_user.php
+200      GET        7l       43w      604c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/Process/proses_delete_jadwal.php
+301      GET        7l       20w      277c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/CLASSES => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/CLASSES/
+301      GET        7l       20w      280c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/COMPONENTS => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/COMPONENTS/
+200      GET        1l        3w       19c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/CLASSES/Auth.php
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/CLASSES/Paket.php
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/CLASSES/User.php
+301      GET        7l       20w      278c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/DATABASE => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/DATABASE/
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/DATABASE/connection.php
+301      GET        7l       20w      277c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/PROCESS => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/PROCESS/
+200      GET        7l       43w      595c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/PROCESS/proses_hapus_user.php
+200      GET        7l       43w      604c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/PROCESS/proses_delete_jadwal.php
+200      GET       54l      134w     2078c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/COMPONENTS/bottom.php
+200      GET      130l      263w     3575c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/COMPONENTS/header.php
+200      GET       25l      112w     1472c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/COMPONENTS/topbar.php
+200      GET        9l       36w      316c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/COMPONENTS/footer.php
+200      GET      125l      255w     2977c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/COMPONENTS/sidebar.php
+301      GET        7l       20w      277c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/CLASSES => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/CLASSES/
+301      GET        7l       20w      280c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/COMPONENTS => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/COMPONENTS/
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/CLASSES/User.php
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/CLASSES/Pendaftaran.php
+200      GET        1l        3w       19c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/CLASSES/Auth.php
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/CLASSES/Paket.php
+200      GET       25l      112w     1472c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/COMPONENTS/topbar.php
+200      GET      125l      255w     2977c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/COMPONENTS/sidebar.php
+200      GET       54l      134w     2078c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/COMPONENTS/bottom.php
+200      GET      130l      263w     3575c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/COMPONENTS/header.php
+200      GET        9l       36w      316c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/COMPONENTS/footer.php
+200      GET        0l        0w        0c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/DATABASE/connection.php
+301      GET        7l       20w      278c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/DATABASE => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/DATABASE/
+301      GET        7l       20w      277c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/PROCESS => http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/PROCESS/
+200      GET        7l       43w      595c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/PROCESS/proses_hapus_user.php
+200      GET        7l       43w      604c http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/PROCESS/proses_delete_jadwal.php
+[####################] - 79s   120599/120599  0s      found:227     errors:293    
+[####################] - 42s    30000/30000   712/s   http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/ 
+[####################] - 49s    30000/30000   616/s   http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/ 
+[####################] - 1s     30000/30000   20590/s http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/ => Directory listing (add --scan-dir-listings to scan)
+[####################] - 0s     30000/30000   84986/s http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/components/ => Directory listing (add --scan-dir-listings to scan)
+[####################] - 2s     30000/30000   15732/s http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/pages/ => Directory listing (add --scan-dir-listings to scan)
+[####################] - 0s     30000/30000   247934/s http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/template/ => Directory listing (add --scan-dir-listings to scan)
+[####################] - 1s     30000/30000   25510/s http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/template/forms/ => Directory listing (add --scan-dir-listings to scan)
+[####################] - 0s     30000/30000   138249/s http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/template/assets/ => Directory listing (add --scan-dir-listings to scan)
+[####################] - 4s     30000/30000   7983/s  http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/database/ => Directory listing (add --scan-dir-listings to scan)
+[####################] - 4s     30000/30000   8017/s  http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/classes/ => Directory listing (add --scan-dir-listings to scan)
+[####################] - 4s     30000/30000   8324/s  http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/Components/ => Directory listing (add --scan-dir-listings to scan)
+[####################] - 5s     30000/30000   6434/s  http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/partials/ => Directory listing (add --scan-dir-listings to scan)
+[####################] - 0s     30000/30000   333333/s http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/frontend/database/ => Directory listing (add --scan-dir-listings to scan)
+[####################] - 4s     30000/30000   7601/s  http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/process/ => Directory listing (add --scan-dir-listings to scan)
+[####################] - 4s     30000/30000   7109/s  http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/components/ => Directory listing (add --scan-dir-listings to scan)
+[####################] - 4s     30000/30000   7222/s  http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/Database/ => Directory listing (add --scan-dir-listings to scan)
+[####################] - 4s     30000/30000   7920/s  http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/Classes/ => Directory listing (add --scan-dir-listings to scan)
+[####################] - 73s    30000/30000   412/s   http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/ 
+[####################] - 71s    30000/30000   424/s   http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/ 
+[####################] - 5s     30000/30000   6063/s  http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FrontEnd/ => Directory listing (add --scan-dir-listings to scan)
+[####################] - 3s     30000/30000   9119/s  http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/DataBase/ => Directory listing (add --scan-dir-listings to scan)
+[####################] - 2s     30000/30000   19072/s http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Frontend/ => Directory listing (add --scan-dir-listings to scan)
+[####################] - 3s     30000/30000   9637/s  http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FrontEnd/database/ => Directory listing (add --scan-dir-listings to scan)
+[####################] - 5s     30000/30000   5516/s  http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FrontEnd/pages/ => Directory listing (add --scan-dir-listings to scan)
+[####################] - 2s     30000/30000   18564/s http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FrontEnd/template/ => Directory listing (add --scan-dir-listings to scan)
+[####################] - 5s     30000/30000   5614/s  http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FrontEnd/components/ => Directory listing (add --scan-dir-listings to scan)
+[####################] - 0s     30000/30000   272727/s http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/components/ => Directory listing (add --scan-dir-listings to scan)
+[####################] - 0s     30000/30000   133333/s http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Frontend/template/ => Directory listing (add --scan-dir-listings to scan)
+[####################] - 0s     30000/30000   250000/s http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Frontend/partials/ => Directory listing (add --scan-dir-listings to scan)
+[####################] - 0s     30000/30000   144928/s http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Frontend/database/ => Directory listing (add --scan-dir-listings to scan)
+[####################] - 7s     30000/30000   4212/s  http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Frontend/pages/ => Directory listing (add --scan-dir-listings to scan)
+[####################] - 0s     30000/30000   142180/s http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FrontEnd/template/assets/ => Directory listing (add --scan-dir-listings to scan)
+[####################] - 7s     30000/30000   4220/s  http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Frontend/components/ => Directory listing (add --scan-dir-listings to scan)
+[####################] - 0s     30000/30000   384615/s http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/database/ => Directory listing (add --scan-dir-listings to scan)
+[####################] - 0s     30000/30000   267857/s http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/database/ => Directory listing (add --scan-dir-listings to scan)
+[####################] - 0s     30000/30000   166667/s http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FrontEnd/template/forms/ => Directory listing (add --scan-dir-listings to scan)
+[####################] - 0s     30000/30000   218978/s http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Frontend/template/assets/ => Directory listing (add --scan-dir-listings to scan)
+[####################] - 0s     30000/30000   288462/s http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Frontend/template/forms/ => Directory listing (add --scan-dir-listings to scan)
+[####################] - 0s     30000/30000   329670/s http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/Backend/classes/ => Directory listing (add --scan-dir-listings to scan)
+[####################] - 0s     30000/30000   215827/s http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/BackEnd/classes/ => Directory listing (add --scan-dir-listings to scan)
+[####################] - 0s     30000/30000   236220/s http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FRONTEND/ => Directory listing (add --scan-dir-listings to scan)
+[####################] - 6s     30000/30000   5319/s  http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FRONTEND/database/ => Directory listing (add --scan-dir-listings to scan)
+[####################] - 0s     30000/30000   252101/s http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FRONTEND/components/ => Directory listing (add --scan-dir-listings to scan)
+[####################] - 0s     30000/30000   157895/s http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FRONTEND/template/ => Directory listing (add --scan-dir-listings to scan)
+[####################] - 0s     30000/30000   225564/s http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FRONTEND/pages/ => Directory listing (add --scan-dir-listings to scan)
+[####################] - 6s     30000/30000   5316/s  http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FRONTEND/partials/ => Directory listing (add --scan-dir-listings to scan)
+[####################] - 0s     30000/30000   192308/s http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/FrontEnd/partials/ => Directory listing (add --scan-dir-listings to scan) 

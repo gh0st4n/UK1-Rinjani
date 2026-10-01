@@ -1,0 +1,13 @@
+commit 37417a377b5f82d5440563fb437f13860d44e2e8
+Author: lisnarinjani9-collab <lisnarinjani9@gmail.com>
+Date:   Mon Sep 28 11:05:52 2026 +0700
+
+    anggap aja selesai
+
+diff --git a/TRAVEL-UMROH2 b/TRAVEL-UMROH2
+new file mode 160000
+index 0000000..a4e2b4d
+--- /dev/null
++++ b/TRAVEL-UMROH2
+@@ -0,0 +1 @@
++Subproject commit a4e2b4d23c5703ef67511859165f0eceb9176c94
