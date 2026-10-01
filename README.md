@@ -10,18 +10,18 @@ Repositori ini berisi laporan **Penetration Testing** terhadap aplikasi **Travel
 | --- | --- |
 | **Target** | `http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/` |
 | **Periode** | 01 Oktober 2026 |
-| **Tester** | gh05t4n |
+| **Tester** | gh0st4n |
 | **Metodologi** | Black-box → White-box |
-| **Total Temuan** | **6** (2 Critical, 1 High, 1 Medium-High, 2 Medium) |
+| **Total Temuan** | **8** (2 Critical, 2 High, 1 Medium-High, 3 Medium) |
 
 ### Level Kerentanan
 
 | Level | Jumlah | Keterangan |
 | --- | --- | --- |
 | 🔴 Critical | 2 | Bisa langsung dikuasai penyerang |
-| 🟠 High | 1 | Bocorkan informasi penting server |
+| 🟠 High | 2 | Bocorkan info penting & baca file server |
 | 🟡 Medium-High | 1 | Bocorkan struktur database |
-| 🟡 Medium | 2 | Validasi input lemah |
+| 🟡 Medium | 3 | Validasi input & konfigurasi lemah |
 | 🔵 Low | 0 | — |
 
 ## 📂 Struktur Repositori
@@ -47,4 +47,4 @@ Detail temuan, proof of concept, bukti, dan rekomendasi perbaikan tersedia di:
 
 ---
 
-**Author:** gh05t4n · **Tanggal:** 01 Okt 2026
+**Author:** gh0st4n · **Tanggal:** 01 Okt 2026

